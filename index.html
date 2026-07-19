@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubai Real Estate Directory — Find Trusted Agencies & Brokers in Dubai</title>
+<meta name="description" content="The independent directory of real estate agencies in Dubai. Compare trusted brokers by area and specialty — Dubai Marina, Downtown, Palm Jumeirah, off-plan, luxury and more.">
+<meta property="og:title" content="Dubai Real Estate Directory">
+<meta property="og:description" content="Compare trusted real estate agencies and brokers across Dubai by area and specialty.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dubairealestatedirectory.com/">
+<link rel="canonical" href="https://dubairealestatedirectory.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Dubai Real Estate Directory",
+  "url": "https://dubairealestatedirectory.com/",
+  "description": "Independent directory of real estate agencies and brokers in Dubai, UAE."
+}
+</script>
+<style>
+:root{
+  --midnight:#0B1420;
+  --deep:#122033;
+  --card:#16273D;
+  --gold:#C9A45C;
+  --gold-soft:#E4CD9A;
+  --sand:#F2EDE4;
+  --ink:#E8EDF4;
+  --muted:#8C9AAD;
+  --line:rgba(201,164,92,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--midnight);
+  color:var(--ink);
+  font-family:'Outfit',sans-serif;
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Header */
+header{
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+  background:rgba(11,20,32,.92);
+  backdrop-filter:blur(10px);
+}
+.header-inner{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Marcellus',serif;font-size:1.15rem;letter-spacing:.06em;color:var(--gold-soft);text-decoration:none}
+.logo span{color:var(--muted);font-size:.7rem;letter-spacing:.28em;display:block;text-transform:uppercase;margin-top:-2px}
+.header-cta{
+  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;border:1px solid var(--line);
+  padding:9px 18px;border-radius:2px;transition:all .25s;
+}
+.header-cta:hover{background:var(--gold);color:var(--midnight)}
+
+/* Hero */
+.hero{padding:84px 0 60px;position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:120px;
+  background:
+    linear-gradient(to top, rgba(201,164,92,.06), transparent),
+    repeating-linear-gradient(90deg,
+      transparent 0 42px, rgba(201,164,92,.10) 42px 46px,
+      transparent 46px 110px, rgba(201,164,92,.07) 110px 113px,
+      transparent 113px 168px, rgba(201,164,92,.12) 168px 174px);
+  mask:linear-gradient(to top,#000 30%,transparent);
+  pointer-events:none;
+}
+.eyebrow{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+h1{
+  font-family:'Marcellus',serif;font-weight:400;
+  font-size:clamp(2rem,5.5vw,3.4rem);
+  line-height:1.15;max-width:760px;color:var(--sand);
+}
+h1 em{font-style:normal;color:var(--gold-soft)}
+.hero p{max-width:560px;margin-top:22px;color:var(--muted);font-size:1.02rem}
+.hero-stats{display:flex;gap:44px;margin-top:44px;flex-wrap:wrap}
+.stat b{font-family:'Marcellus',serif;font-size:1.6rem;font-weight:400;color:var(--gold-soft);display:block}
+.stat span{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+/* Controls */
+.controls{padding:34px 0 8px}
+.search{
+  width:100%;max-width:520px;
+  background:var(--deep);border:1px solid var(--line);border-radius:2px;
+  padding:14px 18px;color:var(--ink);font-family:'Outfit',sans-serif;font-size:.95rem;
+  outline:none;transition:border-color .25s;
+}
+.search:focus{border-color:var(--gold)}
+.search::placeholder{color:var(--muted)}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.chip{
+  font-size:.78rem;letter-spacing:.06em;color:var(--muted);
+  border:1px solid rgba(140,154,173,.3);background:transparent;
+  padding:7px 15px;border-radius:2px;cursor:pointer;
+  font-family:'Outfit',sans-serif;transition:all .2s;
+}
+.chip:hover{border-color:var(--gold);color:var(--gold-soft)}
+.chip.active{background:var(--gold);border-color:var(--gold);color:var(--midnight);font-weight:500}
+.count{font-size:.78rem;color:var(--muted);margin-top:16px;letter-spacing:.05em}
+
+/* Grid */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:18px;padding:26px 0 70px;
+}
+.card{
+  background:var(--card);border:1px solid rgba(201,164,92,.12);
+  border-radius:3px;padding:26px 24px 22px;
+  display:flex;flex-direction:column;gap:12px;
+  transition:border-color .25s, transform .25s;
+}
+.card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.card h3{font-family:'Marcellus',serif;font-weight:400;font-size:1.18rem;color:var(--sand)}
+.card .est{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:-8px}
+.card p{font-size:.88rem;color:var(--muted);flex-grow:1}
+.tags{display:flex;gap:7px;flex-wrap:wrap}
+.tag{
+  font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gold-soft);border:1px solid var(--line);
+  padding:4px 10px;border-radius:2px;
+}
+.card a{
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;margin-top:6px;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.card a::after{content:"→";transition:transform .2s}
+.card a:hover::after{transform:translateX(4px)}
+
+/* Guide strip */
+.guide{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:60px 0;background:var(--deep)}
+.guide h2{font-family:'Marcellus',serif;font-weight:400;font-size:1.7rem;color:var(--sand);margin-bottom:14px}
+.guide .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:34px;margin-top:30px}
+.guide h4{font-family:'Marcellus',serif;font-weight:400;color:var(--gold-soft);font-size:1.02rem;margin-bottom:8px}
+.guide p{font-size:.9rem;color:var(--muted)}
+
+/* Listing CTA */
+.listing{padding:74px 0;text-align:center}
+.listing h2{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(1.5rem,3.4vw,2.1rem);color:var(--sand);max-width:620px;margin:0 auto}
+.listing p{color:var(--muted);max-width:480px;margin:16px auto 30px;font-size:.95rem}
+.btn-gold{
+  display:inline-block;background:var(--gold);color:var(--midnight);
+  font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  padding:14px 34px;border-radius:2px;text-decoration:none;transition:background .25s;
+}
+.btn-gold:hover{background:var(--gold-soft)}
+
+footer{border-top:1px solid var(--line);padding:34px 0;font-size:.78rem;color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--gold);text-decoration:none}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="logo" href="/">Dubai Real Estate Directory<span>Independent · Est. 2026</span></a>
+    <a class="header-cta" href="#get-listed">Get Listed</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Agencies · Brokers · Property Management</div>
+    <h1>Every trusted real estate agency in Dubai, <em>in one place.</em></h1>
+    <p>An independent, curated directory of Dubai's established property agencies and brokerages — compare by area, specialty and service before you buy, sell, rent or invest.</p>
+    <div class="hero-stats">
+      <div class="stat"><b id="stat-count">24</b><span>Agencies listed</span></div>
+      <div class="stat"><b>12+</b><span>Areas covered</span></div>
+      <div class="stat"><b>0 AED</b><span>Cost to browse</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="controls">
+  <div class="wrap">
+    <input class="search" id="search" type="text" placeholder="Search agencies… (e.g. Marina, off-plan, luxury)" aria-label="Search agencies">
+    <div class="chips" id="chips">
+      <button class="chip active" data-f="all">All</button>
+      <button class="chip" data-f="luxury">Luxury</button>
+      <button class="chip" data-f="off-plan">Off-Plan</button>
+      <button class="chip" data-f="residential">Residential</button>
+      <button class="chip" data-f="commercial">Commercial</button>
+      <button class="chip" data-f="management">Property Management</button>
+      <button class="chip" data-f="international">International</button>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+</section>
+
+<main class="wrap grid" id="grid"></main>
+
+<section class="guide">
+  <div class="wrap">
+    <h2>Choosing an agency in Dubai</h2>
+    <div class="cols">
+      <div>
+        <h4>Check RERA registration</h4>
+        <p>Every legitimate broker in Dubai must be registered with the Real Estate Regulatory Agency. Ask for the agent's BRN (Broker Registration Number) and verify it on the Dubai REST app before signing anything.</p>
+      </div>
+      <div>
+        <h4>Match specialty to your goal</h4>
+        <p>Off-plan, secondary sales, leasing and commercial are different disciplines. An agency with a strong track record in your target community will price and negotiate better than a generalist.</p>
+      </div>
+      <div>
+        <h4>Understand the fees</h4>
+        <p>Standard buyer agency commission in Dubai is typically 2% of purchase price. Tenants usually pay 5% of annual rent. Anything unusual should be explained in writing before you commit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="listing" id="get-listed">
+  <div class="wrap">
+    <h2>Are you a Dubai agency? Claim your listing.</h2>
+    <p>Featured placements and enhanced profiles are available for established, RERA-registered agencies. Get in front of buyers and investors researching their next move.</p>
+    <a class="btn-gold" href="mailto:hello@dubairealestatedirectory.com?subject=Agency%20Listing%20Enquiry">Enquire About Listing</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Dubai Real Estate Directory. Independent directory — not affiliated with any agency listed.</div>
+    <div><a href="mailto:hello@dubairealestatedirectory.com">hello@dubairealestatedirectory.com</a></div>
+  </div>
+</footer>
+
+<script>
+const agencies = [
+ {n:"Betterhomes",e:"Est. 1986",d:"One of Dubai's longest-running agencies, covering residential and commercial sales, leasing and property management across the city.",t:["residential","commercial","management"]},
+ {n:"Allsopp & Allsopp",e:"Est. 2008",d:"ISO-certified, customer-focused brokerage known for secondary-market sales and leasing in Dubai's family communities.",t:["residential"]},
+ {n:"haus & haus",e:"Est. 2013",d:"Award-winning agency offering sales, leasing, property management and holiday homes across Dubai's top communities.",t:["residential","management","luxury"]},
+ {n:"Driven Properties",e:"Est. 2012",d:"Full-service brokerage and investment advisory headquartered in Downtown Dubai, with international offices and a strong off-plan record.",t:["off-plan","luxury","international","commercial"]},
+ {n:"AX Capital",e:"Est. 2018",d:"Modern agency focused on luxury property and turnkey investment solutions, known for technology-led service.",t:["luxury","off-plan","international"]},
+ {n:"Espace Real Estate",e:"Est. 2009",d:"Specialists in Dubai's villa communities — Springs, Meadows, Arabian Ranches and Dubai Hills — with a strong sales focus.",t:["residential","luxury"]},
+ {n:"Metropolitan Premium Properties",e:"Est. 2008",d:"High-volume brokerage with dedicated off-plan, secondary and luxury divisions and multilingual investor teams.",t:["luxury","off-plan","international"]},
+ {n:"Provident Estate",e:"Est. 2008",d:"Established full-service agency covering sales, rentals, off-plan launches and property management.",t:["residential","off-plan","management"]},
+ {n:"D&B Properties",e:"Est. 2015",d:"Award-winning brokerage spanning residential, commercial and off-plan segments with in-house market research.",t:["residential","commercial","off-plan"]},
+ {n:"Exclusive Links Real Estate Brokers",e:"Est. 2005",d:"Boutique agency with deep market tenure across sales, leasing, property management and holiday homes.",t:["residential","management"]},
+ {n:"Aeon & Trisl",e:"Est. 2013",d:"Leading broker for major developers including Emaar, Damac, Nakheel and Sobha, with strength in off-plan sales.",t:["off-plan","international"]},
+ {n:"Xperience Realty",e:"Est. 2020",d:"Fast-growing agency recognised among Emaar's top brokers, focused on off-plan and investor sales.",t:["off-plan"]},
+ {n:"Engel & Völkers Dubai",e:"Global brand",d:"Dubai arm of the international luxury franchise, specialising in premium residential sales and leasing.",t:["luxury","international","residential"]},
+ {n:"Knight Frank UAE",e:"Global brand",d:"International property consultancy covering prime residential, commercial advisory and valuations in Dubai.",t:["luxury","commercial","international"]},
+ {n:"Savills Dubai",e:"Global brand",d:"Global real estate advisor providing residential sales, commercial agency and property management services.",t:["luxury","commercial","international","management"]},
+ {n:"Bluechip Real Estate",e:"Est. 2005",d:"Long-standing Dubai brokerage committed to transparent transactions across sales and leasing.",t:["residential"]},
+ {n:"Profound Properties",e:"Est. 2020",d:"Independent Business Bay agency specialising in premium and off-plan property for international investors.",t:["luxury","off-plan","international"]},
+ {n:"Think Realty",e:"Dubai",d:"Property agency offering sales, leasing and comprehensive property management services.",t:["residential","management"]},
+ {n:"McCone Properties",e:"Est. 2014",d:"Community-focused brokerage with specialist teams in Dubai Marina, JVC and emerging districts.",t:["residential"]},
+ {n:"fäm Properties",e:"Est. 2009",d:"One of Dubai's largest tech-enabled brokerages with data-driven pricing via DXBinteract.",t:["residential","off-plan","luxury"]},
+ {n:"Unique Properties",e:"Est. 2008",d:"High-volume brokerage and repeated top-performer awardee with major developers, strong in off-plan.",t:["off-plan","international"]},
+ {n:"Coldwell Banker UAE",e:"Global brand",d:"UAE franchise of the global network, covering residential and commercial brokerage.",t:["residential","commercial","international"]},
+ {n:"Asyan Properties",e:"Dubai",d:"Investment-focused agency building long-term relationships with property investors across the UAE.",t:["off-plan","international"]},
+ {n:"Rcapital Real Estate",e:"Dubai",d:"Property management specialist also offering sales and leasing for managed residential and commercial buildings.",t:["management","commercial"]},
+];
+
+const grid=document.getElementById('grid');
+const count=document.getElementById('count');
+const search=document.getElementById('search');
+let filter='all';
+
+function render(){
+  const q=search.value.trim().toLowerCase();
+  const list=agencies.filter(a=>{
+    const matchF = filter==='all' || a.t.includes(filter);
+    const matchQ = !q || a.n.toLowerCase().includes(q) || a.d.toLowerCase().includes(q) || a.t.join(' ').includes(q);
+    return matchF && matchQ;
+  });
+  grid.innerHTML=list.map(a=>`
+    <article class="card">
+      <h3>${a.n}</h3>
+      <div class="est">${a.e}</div>
+      <p>${a.d}</p>
+      <div class="tags">${a.t.map(t=>`<span class="tag">${t.replace('-',' ')}</span>`).join('')}</div>
+      <a href="https://www.google.com/search?q=${encodeURIComponent(a.n+' Dubai real estate')}" target="_blank" rel="noopener">View agency</a>
+    </article>`).join('');
+  count.textContent=`Showing ${list.length} of ${agencies.length} agencies`;
+}
+
+document.getElementById('chips').addEventListener('click',e=>{
+  if(!e.target.classList.contains('chip'))return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  filter=e.target.dataset.f;
+  render();
+});
+search.addEventListener('input',render);
+document.getElementById('stat-count').textContent=agencies.length;
+render();
+</script>
+</body>
+</html>
