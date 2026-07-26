@@ -117,8 +117,9 @@ function agencyPage(a){
 <meta property="og:title" content="${a.n} — Dubai Real Estate Directory">
 <meta property="og:description" content="${desc.replace(/"/g,'&quot;')}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="${SITE}/agencies/${a.slug}.html">
-<link rel="canonical" href="${SITE}/agencies/${a.slug}.html">
+<meta property="og:url" content="${SITE}/agencies/${a.slug}">
+<link rel="canonical" href="${SITE}/agencies/${a.slug}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -176,7 +177,7 @@ const gridHtml = agencies.map((a,i) => `    <article class="card" style="animati
       <a class="g-rating" href="https://www.google.com/maps/search/${encodeURIComponent(a.n+' Dubai real estate')}" target="_blank" rel="noopener" title="Google rating, checked ${REVIEWS_CHECKED}">${starSvg()}<b>${a.g[0].toFixed(1)}</b><span class="g-count">Google &middot; ${a.g[1].toLocaleString()} reviews</span></a>
       <p>${a.d}</p>
       <div class="tags">${a.t.map(t=>`<span class="tag">${t.replace('-',' ')}</span>`).join('')}</div>
-      <a href="/agencies/${a.slug}.html">View agency</a>
+      <a href="/agencies/${a.slug}">View agency</a>
     </article>`).join('\n');
 fs.writeFileSync(path.join(__dirname, 'grid-fragment.html'), gridHtml);
 console.log('Generated grid-fragment.html');
@@ -205,7 +206,7 @@ const itemListSchema = {
   "itemListElement":agencies.map((a,i)=>({
     "@type":"ListItem",
     "position":i+1,
-    "url":`${SITE}/agencies/${a.slug}.html`,
+    "url":`${SITE}/agencies/${a.slug}`,
     "name":a.n
   }))
 };
@@ -216,7 +217,7 @@ console.log('Generated faq-schema.json and itemlist-schema.json');
 // 4. Generate sitemap.xml
 const urls = [
   {loc:`${SITE}/`, priority:"1.0"},
-  ...agencies.map(a=>({loc:`${SITE}/agencies/${a.slug}.html`, priority:"0.7"}))
+  ...agencies.map(a=>({loc:`${SITE}/agencies/${a.slug}`, priority:"0.7"}))
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
