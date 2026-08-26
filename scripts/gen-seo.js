@@ -107,6 +107,15 @@ function agencyPage(a){
     },
     ...(a.website?{"sameAs":[a.website]}:{})
   };
+  const breadcrumbSchema = {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":`${SITE}/`},
+      {"@type":"ListItem","position":2,"name":"Agencies","item":`${SITE}/#areas`},
+      {"@type":"ListItem","position":3,"name":a.n,"item":`${SITE}/agencies/${a.slug}`}
+    ]
+  };
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,12 +127,18 @@ function agencyPage(a){
 <meta property="og:description" content="${desc.replace(/"/g,'&quot;')}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${SITE}/agencies/${a.slug}">
+<meta property="og:image" content="${SITE}/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${a.n} — Dubai Real Estate Directory">
+<meta name="twitter:description" content="${desc.replace(/"/g,'&quot;')}">
+<meta name="twitter:image" content="${SITE}/og-image.svg">
 <link rel="canonical" href="${SITE}/agencies/${a.slug}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
+<script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>
 <style>${CSS}</style>
 </head>
 <body>

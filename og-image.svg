@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#0B1420"/>
+<stop offset="100%" stop-color="#122033"/>
+</linearGradient>
+<linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#C9A45C" stop-opacity=".5"/>
+<stop offset="100%" stop-color="#C9A45C" stop-opacity=".1"/>
+</linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g fill="url(#skyGrad)" opacity="0.8">
+<rect x="60" y="480" width="50" height="150"/>
+<rect x="120" y="440" width="40" height="190"/>
+<path d="M220,630 L220,470 Q260,400 300,470 L300,630 Z"/>
+<rect x="340" y="450" width="46" height="180"/>
+<polygon points="440,630 440,420 462,380 484,420 484,630"/>
+<polygon points="500,630 500,440 520,405 540,440 540,630"/>
+<path d="M600,630 L600,500 L612,500 L612,460 L620,460 L620,420 L628,420 L628,340 L634,290 L640,340 L640,420 L648,420 L648,460 L656,460 L656,500 L668,500 L668,630 Z"/>
+<rect x="700" y="470" width="44" height="160"/>
+<rect x="760" y="430" width="38" height="200"/>
+<rect x="820" y="460" width="50" height="170"/>
+<rect x="890" y="440" width="42" height="190"/>
+<rect x="950" y="475" width="56" height="155"/>
+<rect x="1030" y="450" width="40" height="180"/>
+<rect x="1090" y="470" width="60" height="160"/>
+</g>
+<circle cx="634" cy="290" r="5" fill="#F2EDE4"/>
+<g transform="translate(120,180)">
+<svg viewBox="0 0 32 32" width="56" height="56">
+<path d="M6 27V15Q6 8 16 8Q26 8 26 15V27" stroke="#C9A45C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+<line x1="16" y1="8" x2="16" y2="2" stroke="#C9A45C" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="16" cy="2" r="1.6" fill="#C9A45C"/>
+<line x1="4" y1="27" x2="28" y2="27" stroke="#C9A45C" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
+</g>
+<text x="120" y="290" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#F2EDE4">Dubai Real Estate Directory</text>
+<text x="120" y="335" font-family="Arial, sans-serif" font-size="26" fill="#8C9AAD">Compare trusted agencies and brokers across Dubai</text>
+<text x="120" y="380" font-family="Arial, sans-serif" font-size="20" letter-spacing="3" fill="#C9A45C">INDEPENDENT · EST. 2026</text>
+</svg>
