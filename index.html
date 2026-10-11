@@ -878,24 +878,37 @@ footer a.plain{color:var(--gold);text-decoration:none}
 
 <section class="listing" id="get-listed">
   <div class="wrap">
-    <h2>Are you a Dubai agency? Claim your listing.</h2>
-    <p>Featured placements and enhanced profiles are available for established, RERA-registered agencies. Get in front of buyers and investors researching their next move.</p>
+    <h2>Stand out to buyers already researching.</h2>
+    <p>Every visitor to this directory is actively comparing Dubai agencies. Featured Placement puts yours at the top — one spot per specialty, first come first served.</p>
 
     <div class="packages">
       <div class="package">
         <h4>Standard Listing</h4>
         <div class="price">Free</div>
-        <p>Your agency profile in the directory, searchable and filterable by area and specialty.</p>
+        <p>Your agency profile in the directory, searchable and filterable by area and specialty. All 24 current agencies are on Standard listings.</p>
+        <ul style="list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:.82rem;color:var(--muted);padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Full agency profile page</li>
+          <li style="font-size:.82rem;color:var(--muted);padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Searchable &amp; filterable</li>
+          <li style="font-size:.82rem;color:var(--muted);padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> FAQ &amp; schema markup</li>
+        </ul>
       </div>
       <div class="package highlight">
+        <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--midnight);background:var(--gold);display:inline-block;padding:3px 10px;border-radius:2px;margin-bottom:12px">Intro offer</div>
         <h4>Featured Placement</h4>
-        <div class="price">Contact for pricing</div>
-        <p>Gold badge, top-of-results priority, and enhanced profile description. Limited spots per specialty.</p>
+        <div class="price">AED 299<span style="font-size:.75rem;color:var(--muted);letter-spacing:0">/month</span></div>
+        <p style="font-size:.78rem;color:var(--gold-soft);margin-bottom:14px">First 3 months at <strong style="color:var(--gold)">AED 149/month</strong> &mdash; cancel anytime</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:.82rem;color:var(--muted);padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> ★ Featured badge on your card</li>
+          <li style="font-size:.82rem;color:var(--muted);padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Top of homepage listing</li>
+          <li style="font-size:.82rem;color:var(--muted);padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Priority in all filter results</li>
+          <li style="font-size:.82rem;color:var(--muted);padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> One spot per specialty — exclusive</li>
+          <li style="font-size:.82rem;color:var(--muted);padding-left:18px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">✓</span> Monthly traffic &amp; enquiry report</li>
+        </ul>
       </div>
     </div>
-    <p class="disclosure">Featured Placement is always disclosed with a ★ Featured badge and never removes or reorders another agency's Standard listing. See our <a href="#faq" style="color:var(--gold)">FAQ</a> for how listings work.</p>
+    <p class="disclosure">Featured Placement is always disclosed with a ★ badge and never reorders another agency's Standard listing. Only one Featured spot is available per specialty category. See our <a href="#faq" style="color:var(--gold)">FAQ</a> for details.</p>
 
-    <button class="btn-gold" id="open-lead-form" type="button" style="margin-top:30px">Enquire About Listing</button>
+    <button class="btn-gold" id="open-lead-form" type="button" style="margin-top:30px">Get Featured — Enquire Now</button>
 
     <form class="lead-form" id="lead-form">
       <div>
@@ -918,12 +931,12 @@ footer a.plain{color:var(--gold);text-decoration:none}
         <label for="lf-package">Interested in *</label>
         <select id="lf-package" name="package" required>
           <option value="Standard Listing">Standard Listing (free)</option>
-          <option value="Featured Placement">Featured Placement (paid)</option>
+          <option value="Featured Placement">Featured Placement — AED 149/mo for 3 months, then AED 299/mo</option>
         </select>
       </div>
       <div>
         <label for="lf-message">Message</label>
-        <textarea id="lf-message" name="message" placeholder="Areas covered, specialties, RERA number, anything else we should know."></textarea>
+        <textarea id="lf-message" name="message" placeholder="Your specialty, areas covered, RERA number, anything else we should know."></textarea>
       </div>
       <p class="lead-note">Submitting opens an email to hello@dubairealestatedirectory.com with your details pre-filled — no account needed.</p>
       <button class="btn-gold" type="submit">Send Enquiry</button>
