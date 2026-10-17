@@ -1,0 +1,47 @@
+# Dubai Real Estate Directory
+
+> An independent, curated directory of 24 established real estate agencies and brokerages in Dubai, UAE.
+
+Dubai Real Estate Directory helps buyers, sellers, renters and investors compare trusted real estate agencies across Dubai by area, specialty and service type. All agencies are independently curated — listing placement is never sold or reordered by payment. Featured badges are paid placements and are clearly labelled as such.
+
+## Directory
+
+- [Betterhomes](https://dubairealestatedirectory.com/agencies/betterhomes): One of Dubai's oldest agencies since 1986. Residential sales, leasing, commercial, property management, holiday homes.
+- [Allsopp & Allsopp](https://dubairealestatedirectory.com/agencies/allsopp-allsopp): UK-founded agency focused on residential sales and lettings across Dubai.
+- [haus & haus](https://dubairealestatedirectory.com/agencies/haus-haus): Dubai-based residential specialists with strong off-plan and secondary market coverage.
+- [Driven Properties](https://dubairealestatedirectory.com/agencies/driven-properties): Luxury residential and commercial brokerage covering prime Dubai areas.
+- [AX Capital](https://dubairealestatedirectory.com/agencies/ax-capital): Residential sales and leasing with focus on new developments and luxury.
+- [Espace Real Estate](https://dubairealestatedirectory.com/agencies/espace-real-estate): Independent brokerage specialising in Dubai Springs, Meadows, Lakes and Emirates Living.
+- [Metropolitan Premium Properties](https://dubairealestatedirectory.com/agencies/metropolitan-premium-properties): Russian-founded agency with broad UAE portfolio covering residential and commercial.
+- [Provident Estate](https://dubairealestatedirectory.com/agencies/provident-estate): Dubai-based agency covering off-plan, secondary market, and property management.
+- [D&B Properties](https://dubairealestatedirectory.com/agencies/db-properties): Residential sales and leasing across Dubai with off-plan specialisation.
+- [Exclusive Links Real Estate Brokers](https://dubairealestatedirectory.com/agencies/exclusive-links-real-estate-brokers): Established brokerage covering residential and commercial across Dubai.
+- [Aeon & Trisl](https://dubairealestatedirectory.com/agencies/aeon-trisl): Full-service brokerage covering sales, leasing and property management.
+- [Xperience Realty](https://dubairealestatedirectory.com/agencies/xperience-realty): Property agency offering residential sales, leasing and management services.
+- [Engel & Völkers Dubai](https://dubairealestatedirectory.com/agencies/engel-volkers-dubai): German luxury real estate brand with Dubai residential and commercial coverage.
+- [Knight Frank UAE](https://dubairealestatedirectory.com/agencies/knight-frank-uae): Global property consultancy with UAE residential, commercial and investment advisory.
+- [Savills Dubai](https://dubairealestatedirectory.com/agencies/savills-dubai): Global property brand covering Dubai residential, commercial and investment.
+- [Bluechip Real Estate](https://dubairealestatedirectory.com/agencies/bluechip-real-estate): Property agency covering Dubai residential sales and leasing.
+- [Profound Properties](https://dubairealestatedirectory.com/agencies/profound-properties): Dubai brokerage focused on residential and off-plan property.
+- [Think Realty](https://dubairealestatedirectory.com/agencies/think-realty): Property agency offering sales, leasing and comprehensive property management.
+- [McCone Properties](https://dubairealestatedirectory.com/agencies/mccone-properties): Boutique Dubai brokerage with residential sales and leasing focus.
+- [fäm Properties](https://dubairealestatedirectory.com/agencies/fam-properties): One of Dubai's largest brokerages by volume, covering residential and commercial.
+- [Unique Properties](https://dubairealestatedirectory.com/agencies/unique-properties): Dubai-based agency covering residential sales, leasing and investment.
+- [Coldwell Banker UAE](https://dubairealestatedirectory.com/agencies/coldwell-banker-uae): US franchise with UAE residential and commercial property operations.
+- [Asyan Properties](https://dubairealestatedirectory.com/agencies/asyan-properties): Property agency covering Dubai residential and commercial real estate.
+- [Rcapital Real Estate](https://dubairealestatedirectory.com/agencies/rcapital-real-estate): Dubai brokerage offering residential sales, leasing and investment services.
+
+## About This Directory
+
+- **Independence**: No agency pays to be listed in the standard directory. No listing is reordered by payment.
+- **Featured Placements**: Clearly labelled paid positions for agencies that choose to upgrade their profile.
+- **Star Ratings**: Each agency's star rating is its public Google Maps rating, checked by hand weekly.
+- **Coverage**: All agencies listed operate in Dubai, UAE. Areas covered include Dubai Marina, Downtown Dubai, Palm Jumeirah, Business Bay, JVC, Arabian Ranches, Dubai Hills Estate, JBR, DIFC and more.
+- **Contact**: hello@dubairealestatedirectory.com
+
+## Key Pages
+
+- [Homepage](https://dubairealestatedirectory.com/): Browse all 24 agencies
+- [About](https://dubairealestatedirectory.com/about.html): How the directory works
+- [Privacy Policy](https://dubairealestatedirectory.com/privacy.html)
+- [Terms of Use](https://dubairealestatedirectory.com/terms.html)
