@@ -104,4 +104,20 @@
     <loc>https://dubairealestatedirectory.com/about</loc>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://dubairealestatedirectory.com/advertise</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dubairealestatedirectory.com/how-we-select</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://dubairealestatedirectory.com/best-real-estate-agencies-dubai</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dubairealestatedirectory.com/how-to-find-property-broker-dubai</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
