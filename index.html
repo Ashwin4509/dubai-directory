@@ -95,6 +95,7 @@ body::before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* Header */
 header{
@@ -480,6 +481,7 @@ footer a.plain{color:var(--gold);text-decoration:none}
 
 <section class="controls">
   <div class="wrap">
+    <label for="search" class="sr-only">Search agencies</label>
     <input class="search" id="search" type="text" placeholder="Search agencies… (e.g. Marina, off-plan, luxury)" aria-label="Search agencies">
     <div class="chips" id="chips">
       <button class="chip active" data-f="all">All</button>

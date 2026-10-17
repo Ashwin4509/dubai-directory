@@ -1,29 +1,43 @@
 User-agent: *
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
-# AI crawlers — explicitly welcome
+# OpenAI — training crawler
 User-agent: GPTBot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
+# OpenAI — user-triggered browsing
 User-agent: ChatGPT-User
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
+# Anthropic — user-triggered browsing
 User-agent: anthropic-ai
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: Claude-Web
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
+# Perplexity — AI search crawler
 User-agent: PerplexityBot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
+# Google AI
 User-agent: Gemini-AI
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 User-agent: GoogleOther
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
+# Common Crawl
 User-agent: CCBot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 Sitemap: https://dubairealestatedirectory.com/sitemap.xml
