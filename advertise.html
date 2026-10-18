@@ -300,14 +300,15 @@ async function submitForm(e) {
       document.getElementById('formContent').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     } else {
+      const data = await res.json().catch(() => ({}));
       btn.disabled = false;
       btn.textContent = 'Send enquiry';
-      alert('Something went wrong. Email us directly at hello@dubairealestatedirectory.com');
+      alert('Error ' + res.status + ': ' + (data.error || data.errors?.map(e=>e.message).join(', ') || JSON.stringify(data)));
     }
   } catch(err) {
     btn.disabled = false;
     btn.textContent = 'Send enquiry';
-    alert('Something went wrong. Email us directly at hello@dubairealestatedirectory.com');
+    alert('Network error: ' + err.message);
   }
 }
 </script>
