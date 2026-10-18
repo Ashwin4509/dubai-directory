@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Routine — Dubai Real Estate Directory</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" href="/fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+:root{--midnight:#0B1420;--deep:#122033;--card:#16273D;--gold:#C9A45C;--gold-soft:#E4CD9A;--sand:#F2EDE4;--ink:#E8EDF4;--muted:#8C9AAD;--line:rgba(201,164,92,.22);--green:#4CAF72;--amber:#E4A23A;--red:#D95C5C}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--midnight);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;padding:32px 20px 80px}
+.wrap{max-width:900px;margin:0 auto}
+h1{font-family:'Marcellus',serif;font-size:2rem;color:var(--sand);margin-bottom:6px}
+.subtitle{color:var(--muted);font-size:.9rem;margin-bottom:40px}
+.week-stamp{font-size:.8rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:32px}
+.section{margin-bottom:40px}
+.section-title{font-family:'Marcellus',serif;font-size:1.1rem;color:var(--gold-soft);border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.section-icon{font-size:1rem}
+.task-list{list-style:none;display:grid;gap:10px}
+.task{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:border-color .2s}
+.task:hover{border-color:var(--gold)}
+.task.done{opacity:.55}
+.task.done .task-title{text-decoration:line-through}
+.check{width:20px;height:20px;border:1.5px solid var(--muted);border-radius:3px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.task.done .check{background:var(--green);border-color:var(--green);color:#fff}
+.task-body{}
+.task-title{font-size:.95rem;color:var(--ink);margin-bottom:4px}
+.task-detail{font-size:.82rem;color:var(--muted);line-height:1.5}
+.task-detail a{color:var(--gold);text-decoration:none}
+.task-detail a:hover{text-decoration:underline}
+.badge{display:inline-block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-right:6px;font-weight:500}
+.badge-quick{background:rgba(76,175,114,.15);color:var(--green)}
+.badge-gsuite{background:rgba(201,164,92,.12);color:var(--gold)}
+.badge-content{background:rgba(142,154,173,.12);color:var(--muted)}
+.tip-box{background:rgba(201,164,92,.06);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:14px 18px;margin:10px 0;font-size:.87rem;color:var(--muted);line-height:1.6}
+.tip-box strong{color:var(--gold-soft)}
+.progress-bar-wrap{margin:28px 0 36px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:20px 24px}
+.progress-label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;justify-content:space-between}
+.progress-bar{height:6px;background:rgba(201,164,92,.12);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s}
+.keyword-table{width:100%;border-collapse:collapse;margin:10px 0}
+.keyword-table th{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-align:left;padding:8px 12px;border-bottom:1px solid var(--line)}
+.keyword-table td{padding:10px 12px;border-bottom:1px solid rgba(201,164,92,.08);font-size:.85rem;color:var(--muted)}
+.keyword-table td:first-child{color:var(--ink)}
+.reset-btn{background:none;border:1px solid var(--line);color:var(--muted);font-family:'Outfit',sans-serif;font-size:.78rem;padding:7px 14px;border-radius:3px;cursor:pointer;letter-spacing:.05em;transition:all .2s}
+.reset-btn:hover{border-color:var(--gold);color:var(--gold)}
+.header-row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header-row">
+    <div>
+      <h1>Monday Routine</h1>
+      <div class="subtitle">Dubai Real Estate Directory — private operating checklist</div>
+      <div class="week-stamp" id="week-stamp">Loading…</div>
+    </div>
+    <button class="reset-btn" onclick="resetAll()">Reset all checks</button>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>Weekly progress</span>
+      <span id="progress-pct">0 / 0 done</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- 1. ENQUIRIES -->
+  <div class="section">
+    <div class="section-title"><span class="section-icon">📥</span> 1. Check Enquiries</div>
+    <ul class="task-list">
+      <li class="task" id="t1" onclick="toggle('t1')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">5 min</span>Check Formspree inbox</div>
+          <div class="task-detail">Open <a href="https://formspree.io/forms/mjygzbqo/submissions" target="_blank">formspree.io → Submissions</a> &nbsp;|&nbsp; Also check <strong>ashwin.maniyath09@gmail.com</strong> for email delivery. Look for: new enquiries, agency claim requests, spam reports. Reply within 24 hrs.</div>
+        </div>
+      </li>
+      <li class="task" id="t2" onclick="toggle('t2')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">2 min</span>Log any enquiry in a note</div>
+          <div class="task-detail">Note the agency enquired about, buyer type (investor/end-user/expat), and any feedback on the site. Over time this shows which agencies get the most interest — useful for content ideas.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 2. GSC -->
+  <div class="section">
+    <div class="section-title"><span class="section-icon">🔍</span> 2. Google Search Console</div>
+    <div class="tip-box"><strong>Goal:</strong> Find keywords that are getting impressions but low clicks (position 5–20). These are your quick wins — the site is nearly ranking, and one improvement can push it to page 1. Also watch for any manual penalties or crawl errors.</div>
+    <ul class="task-list">
+      <li class="task" id="t3" onclick="toggle('t3')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-gsuite">GSC</span>Check Performance → Last 28 days</div>
+          <div class="task-detail">Open <a href="https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Adubairealestatedirectory.com" target="_blank">GSC → Performance</a>. Click <strong>Queries</strong> tab. Sort by <strong>Impressions</strong>. Look for queries with 100+ impressions but CTR under 5% — these are your improvement targets. Write the top 3 here or note them.</div>
+        </div>
+      </li>
+      <li class="task" id="t4" onclick="toggle('t4')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-gsuite">GSC</span>Check Pages tab — what's ranking?</div>
+          <div class="task-detail">Click <strong>Pages</strong> tab. Which pages get the most clicks? Which pages get impressions but zero clicks? Zero-click pages often have weak title tags or meta descriptions — improving them can unlock traffic without writing new content.</div>
+        </div>
+      </li>
+      <li class="task" id="t5" onclick="toggle('t5')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-gsuite">GSC</span>Check Indexing → Coverage</div>
+          <div class="task-detail">Go to <strong>Indexing → Pages</strong>. Check the "Not indexed" count. If new pages (agency profiles, articles) are there, click in to see why. Common reasons: "Discovered — currently not indexed" (Google hasn't crawled yet — wait) or "Crawled — currently not indexed" (quality issue — investigate).</div>
+        </div>
+      </li>
+      <li class="task" id="t6" onclick="toggle('t6')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-gsuite">GSC</span>Pick one keyword to improve</div>
+          <div class="task-detail">From the Queries list, choose one keyword ranking positions 8–20 with decent impressions. Open the page it lands on. Ask: is this keyword in the H1? Is it in the meta title? Is there enough content? Make one improvement. Small, consistent changes compound over weeks.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip-box" style="margin-top:18px"><strong>Keywords that are already working (check GSC to confirm current state):</strong><br>These keyword types typically drive the most relevant traffic to a directory like this — verify in GSC each week which are gaining:
+    <table class="keyword-table" style="margin-top:10px">
+      <thead><tr><th>Keyword type</th><th>Example intent</th><th>Best landing page</th></tr></thead>
+      <tbody>
+        <tr><td>"best real estate agencies Dubai"</td><td>Comparison shopping</td><td>/best-real-estate-agencies-dubai</td></tr>
+        <tr><td>"[agency name] Dubai reviews"</td><td>Checking a specific agency</td><td>/agencies/[slug]</td></tr>
+        <tr><td>"freehold areas Dubai expats"</td><td>Research, early buyer journey</td><td>/freehold-areas-dubai-expats</td></tr>
+        <tr><td>"how to buy property in Dubai"</td><td>High intent, buyer journey start</td><td>/how-to-buy-property-in-dubai</td></tr>
+        <tr><td>"off-plan property Dubai"</td><td>Investor research</td><td>/off-plan-property-agencies-dubai</td></tr>
+        <tr><td>"Dubai real estate broker"</td><td>Agent-finding</td><td>/how-to-find-property-broker-dubai</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- 3. GA4 -->
+  <div class="section">
+    <div class="section-title"><span class="section-icon">📊</span> 3. GA4 — User Behaviour</div>
+    <div class="tip-box"><strong>Goal:</strong> Understand what real users do on the site. GSC shows how people find you. GA4 shows what they do after they arrive. Together they give the full picture.</div>
+    <ul class="task-list">
+      <li class="task" id="t7" onclick="toggle('t7')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-gsuite">GA4</span>Check Sessions and Users — last 7 days</div>
+          <div class="task-detail">Open <a href="https://analytics.google.com/analytics/web/#/p381453765/reports/home" target="_blank">GA4 → Reports → Overview</a>. Note total sessions and users for the week. Is it growing week-on-week? If it dropped: was there a GSC indexing issue? Did you publish less that week? Track the trend in a simple note — even just "Week of Oct 18: 120 users" is useful data over time.</div>
+        </div>
+      </li>
+      <li class="task" id="t8" onclick="toggle('t8')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-gsuite">GA4</span>Check top pages — what are people reading?</div>
+          <div class="task-detail">Go to <strong>Reports → Engagement → Pages and screens</strong>. Which pages get the most views? Which agency profiles are most visited? This tells you what users care about — if AX Capital or Allsopp always top the list, users trust those brands. If a newer agency profile is rising, that's a signal to expand its content.</div>
+        </div>
+      </li>
+      <li class="task" id="t9" onclick="toggle('t9')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-gsuite">GA4</span>Check Engagement Rate</div>
+          <div class="task-detail">Engagement Rate (in GA4) = sessions where the user spent 10+ seconds or visited 2+ pages. A rate above 50% is healthy. Below 40% means people are bouncing — often because the page didn't answer their question. If a specific page has low engagement, it may need clearer content or better internal links.</div>
+        </div>
+      </li>
+      <li class="task" id="t10" onclick="toggle('t10')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-gsuite">GA4</span>Note one insight to act on</div>
+          <div class="task-detail">Based on what you saw: write one specific action. Examples: "JVC article gets views but high bounce — add internal links to Harbor Real Estate profile." Or: "Luxury article top page — publish follow-up on Palm Jumeirah agencies." Small, weekly improvements add up fast.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 4. NEW ARTICLE -->
+  <div class="section">
+    <div class="section-title"><span class="section-icon">✍️</span> 4. Publish One New Article</div>
+    <div class="tip-box"><strong>Strategy:</strong> One article per week, always targeting a question a real buyer is asking. Each article should genuinely help someone — not just rank. Link it to 2–3 agency profiles where relevant. Add it to sitemap.xml and submit to IndexNow after publishing.</div>
+    <ul class="task-list">
+      <li class="task" id="t11" onclick="toggle('t11')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-content">Content</span>Choose this week's article topic</div>
+          <div class="task-detail">Pick from the idea bank below, or use a gap you spotted in GSC. Good topics follow the buyer's journey — early research ("what is freehold?"), comparison ("villa vs apartment Dubai"), or action ("Dubai property transfer fees explained").</div>
+        </div>
+      </li>
+      <li class="task" id="t12" onclick="toggle('t12')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-content">Content</span>Write and publish the article</div>
+          <div class="task-detail">Use the same HTML template as existing articles. Must include: Article schema markup, breadcrumb schema, canonical URL, GA4 tracking, internal links to relevant agency profiles or related articles. File name = slug format (e.g. <code>dubai-property-transfer-fees.html</code>).</div>
+        </div>
+      </li>
+      <li class="task" id="t13" onclick="toggle('t13')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-content">Content</span>Add to sitemap.xml and submit IndexNow</div>
+          <div class="task-detail">Add the new article URL to sitemap.xml at priority 0.8. Then submit to IndexNow:<br><code style="font-size:.8rem;background:rgba(255,255,255,.04);padding:4px 8px;border-radius:3px;display:inline-block;margin-top:4px">curl -X POST "https://api.indexnow.org/IndexNow" -H "Content-Type: application/json" -d "{\"host\":\"dubairealestatedirectory.com\",\"key\":\"7824d8ea76bcfd3535a7e748d92a14c6\",\"urlList\":[\"https://dubairealestatedirectory.com/YOUR-SLUG\"]}"</code></div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip-box" style="margin-top:16px"><strong>Article idea bank</strong> (high-value keywords, use one per week):<br>
+    <ul style="margin:8px 0 0 16px;font-size:.85rem;line-height:2">
+      <li>Dubai property transfer fees: complete guide (DLD fees, when you pay, who pays what)</li>
+      <li>Best areas in Dubai for families: schools, communities, price guide</li>
+      <li>Dubai Golden Visa through property: complete 2026 guide</li>
+      <li>Villa vs apartment in Dubai: which is the better investment?</li>
+      <li>Dubai real estate service charges explained (what they are, how to check before buying)</li>
+      <li>Best areas in Dubai for rental yield: JVC, Business Bay, Marina compared</li>
+      <li>How to verify a Dubai real estate agent is RERA registered</li>
+      <li>Off-plan vs secondary market Dubai: which should you buy?</li>
+      <li>Dubai 10-year Golden Visa: everything you need to know</li>
+      <li>Best luxury real estate agencies in Dubai (2026)</li>
+    </ul>
+    </div>
+  </div>
+
+  <!-- 5. NEW AGENCIES -->
+  <div class="section">
+    <div class="section-title"><span class="section-icon">🏢</span> 5. Check for Missing Agencies</div>
+    <div class="tip-box"><strong>Standard:</strong> An agency should be added if it's RERA-registered, has 50+ Google reviews and 4.0+ rating, and has a meaningful presence in the Dubai market. Do NOT set <code>featured: true</code> unless the agency has signed up and paid — this is a hard rule.</div>
+    <ul class="task-list">
+      <li class="task" id="t14" onclick="toggle('t14')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">Research</span>Search "Dubai real estate agencies" and check top results</div>
+          <div class="task-detail">Do a quick Google search for "best real estate agencies Dubai 2026". Look at the top results — any agency consistently appearing that isn't in the directory yet? Also check Property Finder and Bayut's "top agencies" lists. Note any missing major names.</div>
+        </div>
+      </li>
+      <li class="task" id="t15" onclick="toggle('t15')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">Content</span>Add one new agency profile if found</div>
+          <div class="task-detail">Use /agencies/ax-capital.html as the template. Required fields: RERA registration, Google rating (check Maps, note date), areas covered, services, FAQ (3 questions). Add to sitemap.xml at priority 0.7. Update homepage agency count. Submit to IndexNow.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip-box" style="margin-top:12px"><strong>Agencies currently in the directory (27):</strong> Allsopp &amp; Allsopp, AX Capital, Betterhomes, Haus &amp; Haus, Driven Properties, Espace Real Estate, Metropolitan Premium Properties, Provident Estate, DB Properties, Exclusive Links, Aeon Trisl, XPerience Realty, Engel &amp; Völkers, Knight Frank UAE, Savills Dubai, Bluechip, Profound Properties, Think Realty, McCone Properties, fäm Properties, Unique Properties, Coldwell Banker UAE, Asyan Properties, RCapital, Luxhabitat Sotheby's, Hamptons International, Harbor Real Estate.</div>
+  </div>
+
+  <!-- 6. GOOGLE RATINGS UPDATE -->
+  <div class="section">
+    <div class="section-title"><span class="section-icon">⭐</span> 6. Update Google Ratings (Monthly)</div>
+    <div class="tip-box">Do this once per month, not every week. Each agency profile shows a Google rating — check 4–5 agencies per week on rotation so all 27 are verified roughly monthly.</div>
+    <ul class="task-list">
+      <li class="task" id="t16" onclick="toggle('t16')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">5 min</span>Check 4–5 agency ratings on Google Maps</div>
+          <div class="task-detail">Open Google Maps for each agency. If the rating has changed from what the profile shows, update the HTML: the rating number, review count, and the "checked [date]" text in both the g-rating link and the notice footer. Aim to keep all ratings within 30 days of the current date.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 7. DESIGN / TRUST CHECK -->
+  <div class="section">
+    <div class="section-title"><span class="section-icon">🎨</span> 7. Design &amp; Trust Check</div>
+    <ul class="task-list">
+      <li class="task" id="t17" onclick="toggle('t17')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">2 min</span>Visit the live site as a first-time visitor</div>
+          <div class="task-detail">Open <a href="https://dubairealestatedirectory.com" target="_blank">dubairealestatedirectory.com</a> in an incognito window. Ask yourself: Does it look trustworthy? Is it clear what this site is? Can I find an agency quickly? Would I trust this site to help me choose a real estate agent? If anything feels off, note it.</div>
+        </div>
+      </li>
+      <li class="task" id="t18" onclick="toggle('t18')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">2 min</span>Check on mobile</div>
+          <div class="task-detail">Open the site on your phone. Check: is the homepage readable? Do agency cards look good? Does the enquiry form work? Over 60% of real estate research starts on mobile — it must look great there.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 8. COMMIT + DEPLOY -->
+  <div class="section">
+    <div class="section-title"><span class="section-icon">🚀</span> 8. Commit and Deploy Changes</div>
+    <ul class="task-list">
+      <li class="task" id="t19" onclick="toggle('t19')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">5 min</span>Commit all changes to GitHub</div>
+          <div class="task-detail">All changes (new pages, sitemap updates, rating updates) get committed to the <code>main</code> branch of <code>Ashwin4509/dubai-directory</code>. Cloudflare Pages deploys automatically. Check the Cloudflare Pages dashboard after 2–3 minutes to confirm deployment.</div>
+        </div>
+      </li>
+      <li class="task" id="t20" onclick="toggle('t20')">
+        <div class="check"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="task-body">
+          <div class="task-title"><span class="badge badge-quick">1 min</span>Verify deployment on live site</div>
+          <div class="task-detail">After Cloudflare confirms deployment, open the live URL of any new page you published. Confirm it loads, the design looks right, and there are no 404 errors.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div style="margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)">
+    <strong style="color:var(--gold-soft)">Remember:</strong> The site's purpose is to help buyers trust who they reach out to. Every week, ask: "Does this site make it easier and safer for someone to choose a Dubai real estate agent?" If the answer is yes, you're on the right track.
+  </div>
+
+</div>
+
+<script>
+function getWeekStamp() {
+  const now = new Date();
+  const day = now.getDay();
+  const mon = new Date(now);
+  mon.setDate(now.getDate() - (day === 0 ? 6 : day - 1));
+  const sun = new Date(mon);
+  sun.setDate(mon.getDate() + 6);
+  const fmt = d => d.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'});
+  return `Week of ${fmt(mon)} – ${fmt(sun)}`;
+}
+
+function getStorageKey() {
+  const now = new Date();
+  const day = now.getDay();
+  const mon = new Date(now);
+  mon.setDate(now.getDate() - (day === 0 ? 6 : day - 1));
+  return 'routine-' + mon.toISOString().slice(0,10);
+}
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(getStorageKey()) || '{}');
+    Object.keys(saved).forEach(id => {
+      const el = document.getElementById(id);
+      if (el && saved[id]) el.classList.add('done');
+    });
+  } catch(e) {}
+  updateProgress();
+}
+
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('done');
+  try {
+    const key = getStorageKey();
+    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    saved[id] = el.classList.contains('done');
+    localStorage.setItem(key, JSON.stringify(saved));
+  } catch(e) {}
+  updateProgress();
+}
+
+function updateProgress() {
+  const all = document.querySelectorAll('.task');
+  const done = document.querySelectorAll('.task.done');
+  const pct = all.length ? Math.round(done.length / all.length * 100) : 0;
+  document.getElementById('progress-pct').textContent = `${done.length} / ${all.length} done`;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+function resetAll() {
+  if (!confirm('Reset all checks for this week?')) return;
+  document.querySelectorAll('.task').forEach(el => el.classList.remove('done'));
+  try { localStorage.removeItem(getStorageKey()); } catch(e) {}
+  updateProgress();
+}
+
+document.getElementById('week-stamp').textContent = getWeekStamp();
+loadState();
+</script>
+</body>
+</html>
