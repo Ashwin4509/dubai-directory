@@ -232,6 +232,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.78rem;color:va
       <p id="modalSubtitle">Tell us about your agency and we'll be in touch within one business day.</p>
       <form id="claimForm" onsubmit="submitForm(event)">
         <input type="hidden" id="selectedPlan" name="plan" value="">
+        <input type="hidden" name="_subject" value="New listing enquiry — Dubai Real Estate Directory">
         <div class="form-group">
           <label for="agencyName">Agency name</label>
           <input type="text" id="agencyName" name="agency" placeholder="e.g. Fam Properties" required>
@@ -283,28 +284,31 @@ function closeModal() {
 document.getElementById('claimModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
   const f = e.target;
-  const data = {
-    agency: f.agency.value,
-    name: f.name.value,
-    email: f.email.value,
-    plan: f.planChoice.value,
-    message: f.message.value
-  };
-  // Send to mailto as fallback (no backend needed)
-  const subject = encodeURIComponent('Featured listing enquiry — ' + data.agency);
-  const body = encodeURIComponent(
-    'Agency: ' + data.agency + '\n' +
-    'Contact: ' + data.name + '\n' +
-    'Email: ' + data.email + '\n' +
-    'Plan: ' + data.plan + '\n' +
-    'Message: ' + (data.message || 'None')
-  );
-  window.location.href = 'mailto:hello@dubairealestatedirectory.com?subject=' + subject + '&body=' + body;
-  document.getElementById('formContent').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+  const btn = f.querySelector('[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try {
+    const res = await fetch('https://formspree.io/f/mjygzbqo', {
+      method: 'POST',
+      body: new FormData(f),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send enquiry';
+      alert('Something went wrong. Email us directly at hello@dubairealestatedirectory.com');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Send enquiry';
+    alert('Something went wrong. Email us directly at hello@dubairealestatedirectory.com');
+  }
 }
 </script>
 </body>
