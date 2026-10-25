@@ -390,6 +390,40 @@ footer a.plain{color:var(--gold);text-decoration:none}
   *{transition:none!important;scroll-behavior:auto!important;animation:none!important}
   .reveal{opacity:1!important;transform:none!important}
 }
+
+/* How it works */
+.how-works{padding:56px 0;background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.how-works .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:36px;position:relative}
+.how-works .steps::before{content:"";position:absolute;top:30px;left:calc(50% - 240px);right:calc(50% - 240px);height:1px;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);pointer-events:none}
+.hw-step{text-align:center;padding:0 28px}
+.hw-num{font-family:'Marcellus',serif;font-size:2.4rem;color:var(--gold);display:block;line-height:1;margin-bottom:14px}
+.hw-title{font-size:.95rem;font-weight:500;color:var(--sand);margin-bottom:8px}
+.hw-body{font-size:.86rem;color:var(--muted);line-height:1.72}
+
+/* Buyer guide cards */
+.guide-strip{padding:56px 0}
+.guide-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:30px}
+.guide-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 20px;text-decoration:none;transition:border-color .2s,transform .2s;display:block}
+.guide-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.guide-card h4{font-family:'Marcellus',serif;font-weight:400;font-size:1rem;color:var(--gold-soft);margin-bottom:8px}
+.guide-card p{font-size:.84rem;color:var(--muted);line-height:1.6}
+.guide-card .guide-cta{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:12px;display:block}
+
+/* Mobile */
+@media(max-width:600px){
+  .how-works .steps{grid-template-columns:1fr;gap:30px}
+  .how-works .steps::before{display:none}
+  .hw-step{padding:0 8px;text-align:left}
+  .hw-num{display:inline;font-size:1.8rem;margin-right:8px;margin-bottom:0;vertical-align:middle}
+  .hw-title{display:inline;vertical-align:middle}
+  .hw-body{display:block;margin-top:6px}
+  .grid{grid-template-columns:1fr}
+  .hero{padding:52px 0 0}
+  .hero-stats{gap:24px}
+  .trustbar .wrap{flex-direction:column;gap:14px;align-items:flex-start;padding:16px 20px}
+  .area-grid{grid-template-columns:1fr 1fr}
+  .hero p{font-size:.94rem}
+}
 </style>
 </head>
 <body>
@@ -477,6 +511,33 @@ footer a.plain{color:var(--gold);text-decoration:none}
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Always free to browse — no account, no paywall</div>
   </div>
 </div>
+<section class="how-works">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">How it works</div>
+      <h2>Find the right Dubai agency in three steps</h2>
+      <p>Free for buyers, sellers and renters. We earn only if an agency chooses Featured Placement — never by selling your data or steering you to a paid result.</p>
+    </div>
+    <div class="steps">
+      <div class="hw-step reveal">
+        <span class="hw-num">01</span>
+        <div class="hw-title">Browse by area or specialty</div>
+        <p class="hw-body">Filter by community — Marina, Downtown, Palm, JVC — or by type: luxury, off-plan, property management. Every agency shows Google ratings, years active and exactly what they specialise in.</p>
+      </div>
+      <div class="hw-step reveal">
+        <span class="hw-num">02</span>
+        <div class="hw-title">Compare on equal terms</div>
+        <p class="hw-body">Standard listings are never ranked by fee. We check RERA status and Google ratings by hand. What you see reflects the agency's actual market standing — not who paid the most this month.</p>
+      </div>
+      <div class="hw-step reveal">
+        <span class="hw-num">03</span>
+        <div class="hw-title">Contact directly — no middleman</div>
+        <p class="hw-body">Go straight to the agency's website or phone. No lead forms selling your contact details. No commission passed to us. Your search stays your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="mashrabiya-strip"></div>
 
 <section class="controls">
@@ -846,6 +907,44 @@ footer a.plain{color:var(--gold);text-decoration:none}
     </div>
   </div>
 </section>
+
+<section class="guide-strip">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Buyer resources</div>
+      <h2>Know before you commit</h2>
+      <p>Independent guides covering what every Dubai property buyer needs to understand — fees, RERA rules, area prices and Golden Visa eligibility.</p>
+    </div>
+    <div class="guide-cards">
+      <a class="guide-card reveal" href="/how-to-buy-property-in-dubai">
+        <h4>How to buy property in Dubai</h4>
+        <p>The full purchase process — offer, MOU, NOC, DLD registration and what fees to expect at each stage.</p>
+        <span class="guide-cta">Read guide →</span>
+      </a>
+      <a class="guide-card reveal" href="/freehold-areas-dubai-expats">
+        <h4>Freehold areas for expats</h4>
+        <p>Where non-UAE nationals can legally own property — designated zones, restrictions and what to verify first.</p>
+        <span class="guide-cta">Read guide →</span>
+      </a>
+      <a class="guide-card reveal" href="/dubai-golden-visa-property">
+        <h4>Golden Visa through property</h4>
+        <p>How the AED 2M property Golden Visa works, what qualifies and what residency rights it provides.</p>
+        <span class="guide-cta">Read guide →</span>
+      </a>
+      <a class="guide-card reveal" href="/dubai-marina">
+        <h4>Dubai Marina area guide</h4>
+        <p>Average prices per sqft, top buildings, rental yields and which agencies are most active there.</p>
+        <span class="guide-cta">Read guide →</span>
+      </a>
+      <a class="guide-card reveal" href="/downtown-dubai">
+        <h4>Downtown Dubai area guide</h4>
+        <p>Burj Khalifa district prices, yields, top buildings and which agencies cover Downtown best.</p>
+        <span class="guide-cta">Read guide →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <div class="mashrabiya-strip"></div>
 
 <section class="guide" id="guide">
