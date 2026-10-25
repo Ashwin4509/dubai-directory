@@ -176,4 +176,12 @@
     <loc>https://dubairealestatedirectory.com/dubai-golden-visa-property</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://dubairealestatedirectory.com/agencies/remax-ultima</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dubairealestatedirectory.com/agencies/tekce-real-estate</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>
