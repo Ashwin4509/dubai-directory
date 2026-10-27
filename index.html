@@ -1189,7 +1189,7 @@ function render(){
       ${a.g?`<a class="g-rating" href="https://www.google.com/maps/search/${encodeURIComponent(a.n+' Dubai real estate')}" target="_blank" rel="noopener" title="Google rating, checked ${REVIEWS_CHECKED}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z"/></svg><b>${a.g[0].toFixed(1)}</b><span class="g-count">Google · ${a.g[1].toLocaleString()} reviews</span></a>`:''}
       <p>${a.d}</p>
       <div class="tags">${a.t.map(t=>`<span class="tag">${t.replace('-',' ')}</span>`).join('')}</div>
-      <a href="/agencies/${a.s}">View agency</a>
+      <a href="/agencies/${a.s}" onclick="gtag('event','agency_profile_click',{agency_name:'${a.n.replace(/'/g,"\\'")}'})">View agency</a>
     </article>`).join('');
   count.textContent=`Showing ${list.length} of ${agencies.length} agencies`;
 }
@@ -1200,8 +1200,10 @@ document.getElementById('chips').addEventListener('click',e=>{
   e.target.classList.add('active');
   filter=e.target.dataset.f;
   render();
+  if(filter!=='all')gtag('event','filter_chip_click',{filter_name:filter});
 });
-search.addEventListener('input',render);
+let _st;
+search.addEventListener('input',function(){render();clearTimeout(_st);_st=setTimeout(()=>{if(this.value.length>2)gtag('event','search_use',{search_term:this.value});},1200);});
 render();
 
 // Animated count-up for hero stats (respects reduced-motion)
@@ -1251,6 +1253,7 @@ document.getElementById('open-lead-form').addEventListener('click',()=>{
   leadForm.classList.add('open');
   leadForm.scrollIntoView({behavior:'smooth',block:'center'});
   document.getElementById('lf-agency').focus();
+  gtag('event','lead_form_open');
 });
 leadForm.addEventListener('submit',e=>{
   e.preventDefault();
@@ -1265,6 +1268,7 @@ leadForm.addEventListener('submit',e=>{
     '',
     f.get('message')||''
   ].join('\n');
+  gtag('event','featured_enquiry',{package_type:f.get('package'),agency_name:f.get('agency')});
   window.location.href=`mailto:hello@dubairealestatedirectory.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 </script>
