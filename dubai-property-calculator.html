@@ -110,6 +110,16 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .yield-meter{margin-top:10px;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
 .yield-fill{height:100%;border-radius:3px;transition:width .4s,background .4s}
 
+/* VISA BADGE */
+.visa-badge{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(201,164,92,.08);border:1px solid rgba(201,164,92,.35);border-radius:4px;margin-top:12px}
+.visa-badge-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.visa-badge-text{font-size:.8rem;color:var(--gold-soft);line-height:1.6}
+.visa-badge-text strong{color:var(--gold)}
+
+/* STRESS TEST */
+.stress-pass{color:var(--green);font-weight:500}
+.stress-fail{color:var(--red);font-weight:500}
+
 /* NOTICE */
 .calc-notice{font-size:.78rem;color:var(--muted);line-height:1.6;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:4px;margin-top:16px}
 
@@ -146,6 +156,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
     <button class="tab active" role="tab" onclick="switchTab('cost', this)">🏠 Buying Cost</button>
     <button class="tab" role="tab" onclick="switchTab('yield', this)">📈 Rental Yield</button>
     <button class="tab" role="tab" onclick="switchTab('mortgage', this)">🏦 Mortgage</button>
+    <button class="tab" role="tab" onclick="switchTab('afford', this)">💰 Affordability</button>
   </div>
 
   <!-- ==============================
@@ -317,6 +328,60 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
     </div>
   </div>
 
+  <!-- ==============================
+       TAB 4: AFFORDABILITY
+  =============================== -->
+  <div class="tab-panel" id="panel-afford">
+    <div class="calc-grid">
+      <div class="inputs-panel">
+
+        <div class="field">
+          <label>Monthly Gross Income (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="a-income" value="30000" min="1000" step="1000" oninput="calcAfford()">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Existing monthly debt payments (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="a-debts" value="0" min="0" step="500" oninput="calcAfford()">
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:5px">Car loans, personal loans, credit card minimums, etc.</div>
+        </div>
+
+        <div class="field">
+          <label>Deposit you can put down (%)</label>
+          <input type="range" id="a-deposit" min="20" max="80" value="25" step="5" oninput="document.getElementById('a-deposit-val').textContent=this.value+'%'; calcAfford()">
+          <div class="range-row"><span>20%</span><span class="range-val" id="a-deposit-val">25%</span><span>80%</span></div>
+        </div>
+
+        <div class="field">
+          <label>Expected interest rate (%)</label>
+          <input type="range" id="a-rate" min="2" max="9" value="4.5" step="0.25" oninput="document.getElementById('a-rate-val').textContent=parseFloat(this.value).toFixed(2)+'%'; calcAfford()">
+          <div class="range-row"><span>2%</span><span class="range-val" id="a-rate-val">4.50%</span><span>9%</span></div>
+        </div>
+
+        <div class="field">
+          <label>Loan term (years)</label>
+          <input type="range" id="a-term" min="5" max="25" value="20" step="1" oninput="document.getElementById('a-term-val').textContent=this.value+' yrs'; calcAfford()">
+          <div class="range-row"><span>5 yrs</span><span class="range-val" id="a-term-val">20 yrs</span><span>25 yrs</span></div>
+        </div>
+
+      </div>
+
+      <div class="results-panel" id="afford-results">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <div class="calc-notice">
+      Based on the UAE Central Bank Debt Burden Ratio (DBR) rule: total monthly obligations (including mortgage) must not exceed 50% of gross monthly income. This is the standard cap applied by UAE banks when assessing mortgage applications. Actual approval depends on your credit history, employment status, visa type and the specific bank's criteria. Get a formal pre-approval from your bank before making an offer.
+    </div>
+  </div>
+
   <!-- GUIDE SECTION -->
   <div class="guide">
     <h2>Key numbers to know</h2>
@@ -450,6 +515,8 @@ function calcCost(){
       </div>
     </div>
     ${costState.market==='off-plan'?`<div class="result-card"><div class="result-label" style="color:var(--amber)">Off-plan note</div><div class="result-sub" style="color:var(--muted);margin-top:0">Some developers waive the 4% DLD fee for off-plan purchases. Ask your developer before signing. The DLD fee is included here as a conservative estimate.</div></div>`:''}
+    ${price>=2000000?`<div class="visa-badge"><span class="visa-badge-icon">🏅</span><div class="visa-badge-text"><strong>Golden Visa eligible</strong> — This purchase price meets the AED 2M threshold for a 10-year UAE Golden Visa. For cash purchases, eligibility applies at transfer. For mortgaged purchases, your equity (not loan amount) must equal AED 2M+ — confirm with the GDRFA.</div></div>`:''}
+    ${price>=750000&&price<2000000?`<div class="visa-badge"><span class="visa-badge-icon">📋</span><div class="visa-badge-text"><strong>Investor visa eligible (2-year)</strong> — Properties at AED 750K+ qualify for a 2-year investor visa. For the 10-year Golden Visa, you need AED 2M+.</div></div>`:''}
   `;
   document.getElementById('cost-results').innerHTML = html;
 }
@@ -594,11 +661,79 @@ function calcMortgage(){
   document.getElementById('mortgage-results').innerHTML = html;
 }
 
+// ─── AFFORDABILITY ────────────────────────────────────────────
+function calcAfford(){
+  const income  = parseFloat(document.getElementById('a-income').value)||0;
+  const debts   = parseFloat(document.getElementById('a-debts').value)||0;
+  const depPct  = parseFloat(document.getElementById('a-deposit').value)/100||0.25;
+  const annRate = parseFloat(document.getElementById('a-rate').value)/100||0.045;
+  const termYrs = parseInt(document.getElementById('a-term').value)||20;
+  if(!income) return;
+
+  // UAE Central Bank DBR: max 50% of gross income for all obligations
+  const maxTotalObligation = income * 0.50;
+  const maxMonthlyPayment  = maxTotalObligation - debts;
+
+  if(maxMonthlyPayment <= 0){
+    document.getElementById('afford-results').innerHTML = `
+      <div class="result-card" style="border-color:var(--red)">
+        <div class="result-label" style="color:var(--red)">Existing debts exceed UAE bank limit</div>
+        <div class="result-sub" style="color:var(--muted);margin-top:0">Your existing monthly debt payments (AED ${fmtRaw(debts)}) exceed 50% of your income (AED ${fmtRaw(maxTotalObligation)}). UAE banks require room within the 50% DBR cap for a mortgage payment.</div>
+      </div>`;
+    return;
+  }
+
+  const months    = termYrs * 12;
+  const monthRate = annRate / 12;
+
+  // Back-calculate max loan from max monthly payment
+  let maxLoan;
+  if(monthRate === 0){
+    maxLoan = maxMonthlyPayment * months;
+  } else {
+    maxLoan = maxMonthlyPayment * (Math.pow(1+monthRate, months) - 1) / (monthRate * Math.pow(1+monthRate, months));
+  }
+
+  const maxPrice   = maxLoan / (1 - depPct);
+  const maxDeposit = maxPrice * depPct;
+  const dbr        = ((maxMonthlyPayment + debts) / income * 100);
+  const isGoldenVisa = maxPrice >= 2000000;
+
+  document.getElementById('afford-results').innerHTML = `
+    <div class="result-card highlight">
+      <div class="result-label">Maximum property price</div>
+      <div class="result-value">${fmt(maxPrice)}</div>
+      <div class="result-sub">At ${Math.round(depPct*100)}% deposit, ${(annRate*100).toFixed(2)}% rate, ${termYrs}-yr term</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Maximum mortgage loan</div>
+      <div class="result-value" style="font-size:1.3rem">${fmt(maxLoan)}</div>
+      <div class="result-sub">Deposit needed: AED ${fmtRaw(maxDeposit)}</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Maximum monthly payment</div>
+      <div class="result-value" style="font-size:1.3rem">AED ${fmtRaw(maxMonthlyPayment)}</div>
+      <div class="result-sub">Your DBR at this limit: ${dbr.toFixed(0)}% of gross income (bank max: 50%)</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">How this was calculated</div>
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="bk-label">Monthly income</span><span class="bk-val">AED ${fmtRaw(income)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">50% DBR cap</span><span class="bk-val">AED ${fmtRaw(maxTotalObligation)}</span></div>
+        ${debts>0?`<div class="breakdown-row"><span class="bk-label">Existing debts</span><span class="bk-val" style="color:var(--red)">− AED ${fmtRaw(debts)}</span></div>`:''}
+        <div class="breakdown-row total"><span class="bk-label">Available for mortgage</span><span class="bk-val">AED ${fmtRaw(maxMonthlyPayment)}/mo</span></div>
+      </div>
+    </div>
+    ${isGoldenVisa?`<div class="visa-badge"><span class="visa-badge-icon">🏅</span><div class="visa-badge-text"><strong>Golden Visa eligible</strong> — Your maximum price of ${fmt(maxPrice)} qualifies for the 10-year UAE Golden Visa. Subject to GDRFA confirmation.</div></div>`:''}
+  `;
+}
+
 // ─── INIT ─────────────────────────────────────────────────────
 calcCost();
 calcYield();
 updateLTVLimits();
 calcMortgage();
+calcAfford();
 </script>
 </body>
 </html>
