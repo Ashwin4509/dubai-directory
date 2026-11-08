@@ -157,6 +157,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
     <button class="tab" role="tab" onclick="switchTab('yield', this)">📈 Rental Yield</button>
     <button class="tab" role="tab" onclick="switchTab('mortgage', this)">🏦 Mortgage</button>
     <button class="tab" role="tab" onclick="switchTab('afford', this)">💰 Affordability</button>
+    <button class="tab" role="tab" onclick="switchTab('buyrent', this)">⚖️ Buy vs Rent</button>
   </div>
 
   <!-- ==============================
@@ -260,6 +261,33 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
           <label>Expected vacancy (weeks/year)</label>
           <input type="range" id="y-vacancy" min="0" max="12" value="2" step="1" oninput="document.getElementById('y-vacancy-val').textContent=this.value+' wks'; calcYield()">
           <div class="range-row"><span>0 wks</span><span class="range-val" id="y-vacancy-val">2 wks</span><span>12 wks</span></div>
+        </div>
+
+        <div class="field">
+          <label>How are you buying?</label>
+          <div class="toggle-row">
+            <button class="toggle-btn active" id="btn-y-cash" onclick="setYieldFinance('cash')">Cash</button>
+            <button class="toggle-btn" id="btn-y-mortgage" onclick="setYieldFinance('mortgage')">Mortgaged</button>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:5px">Mortgaged shows cash-on-cash return and bank stress test.</div>
+        </div>
+
+        <div id="y-mortgage-inputs" style="display:none">
+          <div class="field">
+            <label>Your deposit (%)</label>
+            <input type="range" id="y-dep" min="25" max="80" value="25" step="5" oninput="document.getElementById('y-dep-val').textContent=this.value+'%'; calcYield()">
+            <div class="range-row"><span>25%</span><span class="range-val" id="y-dep-val">25%</span><span>80%</span></div>
+          </div>
+          <div class="field">
+            <label>Mortgage rate (%)</label>
+            <input type="range" id="y-rate" min="2" max="9" value="4.5" step="0.25" oninput="document.getElementById('y-rate-val').textContent=parseFloat(this.value).toFixed(2)+'%'; calcYield()">
+            <div class="range-row"><span>2%</span><span class="range-val" id="y-rate-val">4.50%</span><span>9%</span></div>
+          </div>
+          <div class="field">
+            <label>Loan term (years)</label>
+            <input type="range" id="y-term" min="5" max="25" value="20" step="1" oninput="document.getElementById('y-term-val').textContent=this.value+' yrs'; calcYield()">
+            <div class="range-row"><span>5 yrs</span><span class="range-val" id="y-term-val">20 yrs</span><span>25 yrs</span></div>
+          </div>
         </div>
 
       </div>
@@ -382,6 +410,80 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
     </div>
   </div>
 
+  <!-- ==============================
+       TAB 5: BUY VS RENT
+  =============================== -->
+  <div class="tab-panel" id="panel-buyrent">
+    <div class="calc-grid">
+      <div class="inputs-panel">
+
+        <div class="field">
+          <label>Property price (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="br-price" value="1500000" min="100000" step="50000" oninput="calcBuyRent()">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Comparable monthly rent you'd pay (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="br-rent" value="8000" min="500" step="500" oninput="calcBuyRent()">
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:5px">What would renting a similar property cost per month?</div>
+        </div>
+
+        <div class="field">
+          <label>Your deposit (%)</label>
+          <input type="range" id="br-deposit" min="25" max="80" value="25" step="5" oninput="document.getElementById('br-deposit-val').textContent=this.value+'%'; calcBuyRent()">
+          <div class="range-row"><span>25%</span><span class="range-val" id="br-deposit-val">25%</span><span>80%</span></div>
+        </div>
+
+        <div class="field">
+          <label>Mortgage rate (%)</label>
+          <input type="range" id="br-rate" min="2" max="9" value="4.5" step="0.25" oninput="document.getElementById('br-rate-val').textContent=parseFloat(this.value).toFixed(2)+'%'; calcBuyRent()">
+          <div class="range-row"><span>2%</span><span class="range-val" id="br-rate-val">4.50%</span><span>9%</span></div>
+        </div>
+
+        <div class="field">
+          <label>Loan term (years)</label>
+          <input type="range" id="br-term" min="5" max="25" value="20" step="1" oninput="document.getElementById('br-term-val').textContent=this.value+' yrs'; calcBuyRent()">
+          <div class="range-row"><span>5 yrs</span><span class="range-val" id="br-term-val">20 yrs</span><span>25 yrs</span></div>
+        </div>
+
+        <div class="field">
+          <label>How long will you hold? (years)</label>
+          <input type="range" id="br-hold" min="1" max="15" value="5" step="1" oninput="document.getElementById('br-hold-val').textContent=this.value+' yrs'; calcBuyRent()">
+          <div class="range-row"><span>1 yr</span><span class="range-val" id="br-hold-val">5 yrs</span><span>15 yrs</span></div>
+        </div>
+
+        <div class="field">
+          <label>Expected annual capital growth (%)</label>
+          <input type="range" id="br-growth" min="0" max="15" value="5" step="0.5" oninput="document.getElementById('br-growth-val').textContent=parseFloat(this.value).toFixed(1)+'%'; calcBuyRent()">
+          <div class="range-row"><span>0%</span><span class="range-val" id="br-growth-val">5.0%</span><span>15%</span><span style="font-size:.7rem;color:var(--muted)">Dubai avg ≈ 5–8%/yr</span></div>
+        </div>
+
+        <div class="field">
+          <label>Annual service charge (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="br-service" value="12000" min="0" step="1000" oninput="calcBuyRent()">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="results-panel" id="buyrent-results">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <div class="calc-notice">
+      Comparison assumes: buying costs include DLD 4%, agency 2%, trustee AED 5,250, plus all mortgage payments and service charges over the hold period. Capital gain is based on your growth assumption. Renting cost is monthly rent × months held. This does not account for investment returns on the deposit/down-payment saved by renting, rent inflation, or tax (UAE has no property tax or CGT). Use as a directional guide only.
+    </div>
+  </div>
+
   <!-- GUIDE SECTION -->
   <div class="guide">
     <h2>Key numbers to know</h2>
@@ -427,6 +529,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
 // ─── SHARED STATE ────────────────────────────────────────────
 let costState  = { buyerType:'non-uae', market:'secondary', finance:'cash' };
 let mortgState = { buyerType:'non-uae' };
+let yieldState = { finance:'cash' };
 
 function fmt(n){
   if(n>=1000000) return 'AED '+(n/1000000).toFixed(n%1000000===0?0:2)+'M';
@@ -522,6 +625,14 @@ function calcCost(){
 }
 
 // ─── RENTAL YIELD ─────────────────────────────────────────────
+function setYieldFinance(f){
+  yieldState.finance = f;
+  document.getElementById('btn-y-cash').classList.toggle('active', f==='cash');
+  document.getElementById('btn-y-mortgage').classList.toggle('active', f==='mortgage');
+  document.getElementById('y-mortgage-inputs').style.display = f==='mortgage' ? '' : 'none';
+  calcYield();
+}
+
 function calcYield(){
   const price   = parseFloat(document.getElementById('y-price').value)||0;
   const rent    = parseFloat(document.getElementById('y-rent').value)||0;
@@ -531,20 +642,64 @@ function calcYield(){
   if(!price||!rent) return;
 
   const annualRentGross = rent * 12;
-  const vacancyLoss = rent * (vacWks / 4.33); // approx weeks to months
-  const annualRentNet = annualRentGross - vacancyLoss;
+  const vacancyLoss = rent * (vacWks / 4.33);
+  const annualRentEff  = annualRentGross - vacancyLoss;
   const totalCosts = service + other;
+  const annualCashflow = annualRentEff - totalCosts;
+  const monthlyCashflow = annualCashflow / 12;
 
   const grossYield = (annualRentGross / price) * 100;
-  const netYield   = ((annualRentNet - totalCosts) / price) * 100;
-  const annualCashflow = annualRentNet - totalCosts;
-  const monthlyCashflow = annualCashflow / 12;
+  const netYield   = (annualCashflow / price) * 100;
   const breakevenYears = annualCashflow > 0 ? (price / annualCashflow) : null;
 
   const yieldColor = netYield >= 6 ? 'green' : netYield >= 4 ? 'amber' : 'red';
   const yieldLabel = netYield >= 6 ? 'Strong yield' : netYield >= 4 ? 'Moderate yield' : 'Below market average';
   const meterWidth = Math.min(netYield / 10 * 100, 100);
   const meterColor = netYield >= 6 ? 'var(--green)' : netYield >= 4 ? 'var(--amber)' : 'var(--red)';
+
+  // Cash-on-cash (mortgaged)
+  let mortgBlock = '';
+  if(yieldState.finance === 'mortgage'){
+    const depPct  = parseFloat(document.getElementById('y-dep').value)/100 || 0.25;
+    const annRate = parseFloat(document.getElementById('y-rate').value)/100 || 0.045;
+    const termYrs = parseInt(document.getElementById('y-term').value) || 20;
+    const deposit = price * depPct;
+    const loan    = price - deposit;
+    const months  = termYrs * 12;
+    const monthRate = annRate / 12;
+    const monthlyMortgage = monthRate === 0
+      ? loan / months
+      : loan * (monthRate * Math.pow(1+monthRate, months)) / (Math.pow(1+monthRate, months) - 1);
+    const annualMortgage = monthlyMortgage * 12;
+    const levCashflow = annualCashflow - annualMortgage;
+    // Cash invested = deposit + buying fees (DLD 4% + agency 2% + trustee)
+    const fees   = price * 0.06 + 5250;
+    const cashIn = deposit + fees;
+    const cocReturn = (levCashflow / cashIn) * 100;
+    // Bank stress test: monthly rent ÷ monthly mortgage ≥ 1.2 (UAE investment mortgage rule)
+    const stressRatio = rent / monthlyMortgage;
+    const stressPass  = stressRatio >= 1.2;
+    const stressPct   = (stressRatio * 100).toFixed(0);
+    mortgBlock = `
+      <div class="result-card${cocReturn>=0?'':' '}" style="${cocReturn<0?'border-color:var(--red)':''}">
+        <div class="result-label">Cash-on-cash return</div>
+        <div class="result-value ${cocReturn>=6?'green':cocReturn>=3?'amber':'red'}" style="font-size:1.5rem">${cocReturn.toFixed(2)}%</div>
+        <div class="result-sub">Leveraged return on your cash invested (deposit + fees of AED ${fmtRaw(cashIn)})</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Bank stress test</div>
+        <div class="result-value" style="font-size:1.1rem;margin-bottom:6px">
+          <span class="${stressPass?'stress-pass':'stress-fail'}">${stressPass?'✓ PASS':'✗ FAIL'}</span>
+          <span style="font-size:.85rem;color:var(--muted);margin-left:8px">Rent covers ${stressPct}% of mortgage</span>
+        </div>
+        <div class="result-sub">UAE banks require rent ≥ 120% of mortgage payment for investment mortgages. ${stressPass?`Your rent covers ${stressPct}% — above the threshold.`:`Your rent only covers ${stressPct}% of the ${fmt(monthlyMortgage)}/mo payment. Banks may require a larger deposit or lower loan amount.`}</div>
+        <div class="breakdown" style="margin-top:10px">
+          <div class="breakdown-row"><span class="bk-label">Monthly rent</span><span class="bk-val">AED ${fmtRaw(rent)}</span></div>
+          <div class="breakdown-row"><span class="bk-label">Monthly mortgage</span><span class="bk-val">AED ${fmtRaw(monthlyMortgage)}</span></div>
+          <div class="breakdown-row"><span class="bk-label">Levered monthly cashflow</span><span class="bk-val ${levCashflow/12>=0?'':''}">AED ${fmtRaw(levCashflow/12)}</span></div>
+        </div>
+      </div>`;
+  }
 
   const html = `
     <div class="result-card highlight">
@@ -558,11 +713,12 @@ function calcYield(){
       <div class="result-value" style="font-size:1.3rem">${pct(grossYield)}</div>
     </div>
     <div class="result-card">
-      <div class="result-label">Annual cashflow (net)</div>
+      <div class="result-label">Annual cashflow (net, cash purchase)</div>
       <div class="result-value ${annualCashflow>=0?'green':'red'}" style="font-size:1.3rem">AED ${fmtRaw(annualCashflow)}</div>
       <div class="result-sub">AED ${fmtRaw(monthlyCashflow)} / month</div>
     </div>
-    ${breakevenYears?`<div class="result-card"><div class="result-label">Break-even (years to recoup purchase price)</div><div class="result-value" style="font-size:1.3rem">${breakevenYears.toFixed(1)} yrs</div><div class="result-sub">At current net cashflow, excluding capital appreciation</div></div>`:''}
+    ${mortgBlock}
+    ${breakevenYears?`<div class="result-card"><div class="result-label">Break-even (years to recoup purchase price via rent)</div><div class="result-value" style="font-size:1.3rem">${breakevenYears.toFixed(1)} yrs</div><div class="result-sub">At current net cashflow, excluding capital appreciation</div></div>`:''}
     <div class="result-card">
       <div class="result-label">Yield summary</div>
       <div class="breakdown">
@@ -728,12 +884,131 @@ function calcAfford(){
   `;
 }
 
+// ─── BUY VS RENT ─────────────────────────────────────────────
+function calcBuyRent(){
+  const price      = parseFloat(document.getElementById('br-price').value)||0;
+  const rent       = parseFloat(document.getElementById('br-rent').value)||0;
+  const depPct     = parseFloat(document.getElementById('br-deposit').value)/100||0.25;
+  const annRate    = parseFloat(document.getElementById('br-rate').value)/100||0.045;
+  const termYrs    = parseInt(document.getElementById('br-term').value)||20;
+  const holdYrs    = parseInt(document.getElementById('br-hold').value)||5;
+  const growthRate = parseFloat(document.getElementById('br-growth').value)/100||0.05;
+  const service    = parseFloat(document.getElementById('br-service').value)||0;
+  if(!price||!rent) return;
+
+  const deposit    = price * depPct;
+  const loan       = price - deposit;
+  const fees       = price * 0.04 + price * 0.02 + 5250; // DLD + agency + trustee
+  const monthRate  = annRate / 12;
+  const totalMos   = termYrs * 12;
+  const holdMos    = Math.min(holdYrs * 12, totalMos);
+
+  // Monthly mortgage payment
+  const monthly = monthRate === 0
+    ? loan / totalMos
+    : loan * (monthRate * Math.pow(1+monthRate, totalMos)) / (Math.pow(1+monthRate, totalMos) - 1);
+
+  // Remaining loan balance after holdYrs
+  const remainingLoan = holdMos >= totalMos ? 0
+    : monthRate === 0
+      ? loan * (1 - holdMos / totalMos)
+      : loan * (Math.pow(1+monthRate, totalMos) - Math.pow(1+monthRate, holdMos)) / (Math.pow(1+monthRate, totalMos) - 1);
+
+  // Property value at end of hold
+  const propValue = price * Math.pow(1 + growthRate, holdYrs);
+  const capitalGain = propValue - price;
+  const equity = propValue - remainingLoan;
+
+  // Total outflow: buying
+  const mortgPayments = monthly * holdMos;
+  const serviceCosts  = service * holdYrs;
+  const totalBuyOut   = fees + mortgPayments + serviceCosts;
+  // Net cost = outflows minus capital gain (what you "get back" at sale)
+  const netCostBuying = totalBuyOut - capitalGain;
+
+  // Total outflow: renting
+  const totalRentOut = rent * 12 * holdYrs;
+
+  const buyWins   = netCostBuying < totalRentOut;
+  const saving    = Math.abs(totalRentOut - netCostBuying);
+  const verdict   = buyWins ? 'Buying is cheaper' : 'Renting is cheaper';
+  const verdictSub= buyWins
+    ? `Buying saves AED ${fmtRaw(saving)} over ${holdYrs} years vs renting — if the property grows at ${(growthRate*100).toFixed(1)}%/yr.`
+    : `Renting saves AED ${fmtRaw(saving)} over ${holdYrs} years — the capital gain (${(growthRate*100).toFixed(1)}%/yr assumed) doesn't yet offset the mortgage cost.`;
+
+  // Breakeven year
+  let breakevenYear = null;
+  for(let y = 1; y <= Math.min(holdYrs, termYrs, 15); y++){
+    const mos = Math.min(y * 12, totalMos);
+    const pv_y  = price * Math.pow(1 + growthRate, y);
+    const gain_y = pv_y - price;
+    const buyOut_y = fees + monthly * mos + service * y;
+    const netBuy_y = buyOut_y - gain_y;
+    const rentOut_y = rent * 12 * y;
+    if(netBuy_y < rentOut_y && breakevenYear === null){
+      breakevenYear = y;
+    }
+  }
+
+  // Bar widths for visual comparison
+  const maxBar = Math.max(totalBuyOut, totalRentOut, 1);
+  const buyBarW = Math.round(totalBuyOut / maxBar * 100);
+  const rentBarW = Math.round(totalRentOut / maxBar * 100);
+  const gainBarW = Math.round(Math.min(capitalGain / maxBar * 100, 100));
+
+  document.getElementById('buyrent-results').innerHTML = `
+    <div class="result-card highlight" style="border-color:${buyWins?'var(--green)':'var(--amber)'}">
+      <div class="result-label">Verdict over ${holdYrs} years</div>
+      <div class="result-value" style="font-size:1.35rem;color:${buyWins?'var(--green)':'var(--amber)'}">${verdict}</div>
+      <div class="result-sub">${verdictSub}</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Cost comparison (AED)</div>
+      <div class="breakdown">
+        <div class="breakdown-row" style="flex-direction:column;gap:4px">
+          <div style="display:flex;justify-content:space-between"><span class="bk-label">Buying — total outflows</span><span class="bk-val">AED ${fmtRaw(totalBuyOut)}</span></div>
+          <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px"><div style="width:${buyBarW}%;height:100%;background:var(--gold);border-radius:3px"></div></div>
+        </div>
+        <div class="breakdown-row" style="flex-direction:column;gap:4px;margin-top:6px">
+          <div style="display:flex;justify-content:space-between"><span class="bk-label">Less: capital gain</span><span class="bk-val" style="color:var(--green)">− AED ${fmtRaw(capitalGain)}</span></div>
+          <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px"><div style="width:${gainBarW}%;height:100%;background:var(--green);border-radius:3px"></div></div>
+        </div>
+        <div class="breakdown-row" style="flex-direction:column;gap:4px;margin-top:6px">
+          <div style="display:flex;justify-content:space-between"><span class="bk-label" style="color:${buyWins?'var(--green)':'var(--muted)'}">Net cost of buying</span><span class="bk-val">${netCostBuying<0?'<span style="color:var(--green)">Profit AED '+fmtRaw(-netCostBuying)+'</span>':'AED '+fmtRaw(netCostBuying)}</span></div>
+        </div>
+        <div class="breakdown-row" style="flex-direction:column;gap:4px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)">
+          <div style="display:flex;justify-content:space-between"><span class="bk-label">Renting — total outflows</span><span class="bk-val">AED ${fmtRaw(totalRentOut)}</span></div>
+          <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px"><div style="width:${rentBarW}%;height:100%;background:var(--muted);border-radius:3px"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Your equity at year ${holdYrs}</div>
+      <div class="result-value green" style="font-size:1.3rem">AED ${fmtRaw(equity)}</div>
+      <div class="result-sub">Property worth ${fmt(propValue)} − remaining loan AED ${fmtRaw(remainingLoan)}</div>
+    </div>
+    ${breakevenYear ? `<div class="result-card"><div class="result-label">Breakeven year</div><div class="result-value" style="font-size:1.3rem;color:var(--gold)">Year ${breakevenYear}</div><div class="result-sub">The year when buying becomes cheaper than renting (cumulative), at ${(growthRate*100).toFixed(1)}%/yr growth.</div></div>` : `<div class="result-card"><div class="result-label">Breakeven</div><div class="result-sub" style="margin-top:0;color:var(--muted)">Buying does not become cheaper than renting within ${holdYrs} years at ${(growthRate*100).toFixed(1)}%/yr growth. Try a higher growth rate or longer hold.</div></div>`}
+    <div class="result-card">
+      <div class="result-label">Buying cost breakdown</div>
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="bk-label">Deposit (${Math.round(depPct*100)}%)</span><span class="bk-val">AED ${fmtRaw(deposit)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Transaction fees</span><span class="bk-val">AED ${fmtRaw(fees)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Mortgage payments (${holdYrs} yrs)</span><span class="bk-val">AED ${fmtRaw(mortgPayments)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Service charges (${holdYrs} yrs)</span><span class="bk-val">AED ${fmtRaw(serviceCosts)}</span></div>
+        <div class="breakdown-row total"><span class="bk-label">Total outflows</span><span class="bk-val">AED ${fmtRaw(totalBuyOut)}</span></div>
+        <div class="breakdown-row" style="margin-top:4px"><span class="bk-label" style="color:var(--green)">Capital gain (${(growthRate*100).toFixed(1)}%/yr)</span><span class="bk-val" style="color:var(--green)">+ AED ${fmtRaw(capitalGain)}</span></div>
+      </div>
+    </div>
+  `;
+}
+
 // ─── INIT ─────────────────────────────────────────────────────
 calcCost();
 calcYield();
 updateLTVLimits();
 calcMortgage();
 calcAfford();
+calcBuyRent();
 </script>
 </body>
 </html>
