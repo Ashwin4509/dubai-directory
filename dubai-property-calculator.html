@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JK7SNXXR0Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JK7SNXXR0Q');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubai Property Calculator — Buying Costs, Rental Yield & Mortgage (2026)</title>
+<meta name="description" content="Free Dubai property calculator. Work out the total buying cost including DLD fees, calculate rental yield, and estimate mortgage payments — all in one place.">
+<meta property="og:title" content="Dubai Property Calculator — Costs, Yield & Mortgage (2026)">
+<meta property="og:description" content="Calculate total buying costs (DLD 4% fee, agency, trustee), rental yield (gross and net), and monthly mortgage payments for Dubai property.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dubairealestatedirectory.com/dubai-property-calculator">
+<meta property="og:image" content="https://dubairealestatedirectory.com/og-image.png">
+<link rel="canonical" href="https://dubairealestatedirectory.com/dubai-property-calculator">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" href="/fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Dubai Property Calculator","description":"Free Dubai property calculator — total buying costs, rental yield and mortgage payments.","url":"https://dubairealestatedirectory.com/dubai-property-calculator","publisher":{"@type":"Organization","name":"Dubai Real Estate Directory","url":"https://dubairealestatedirectory.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dubairealestatedirectory.com/"},{"@type":"ListItem","position":2,"name":"Dubai Property Calculator","item":"https://dubairealestatedirectory.com/dubai-property-calculator"}]}</script>
+<style>
+:root{
+  --midnight:#0B1420;--deep:#122033;--card:#16273D;--gold:#C9A45C;--gold-soft:#E4CD9A;
+  --sand:#F2EDE4;--ink:#E8EDF4;--muted:#8C9AAD;--line:rgba(201,164,92,.22);
+  --green:#4CAF72;--green-bg:rgba(76,175,114,.1);--amber:#E4A23A;--amber-bg:rgba(228,162,58,.1);
+  --red:#D95C5C;--red-bg:rgba(217,92,92,.1)
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--midnight);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{padding:18px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,20,32,.92);backdrop-filter:blur(10px);z-index:100}
+.header-inner{max-width:860px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Marcellus',serif;font-size:1.05rem;letter-spacing:.06em;color:var(--gold-soft);text-decoration:none;display:inline-flex;align-items:center;gap:9px}
+.mark{flex-shrink:0;width:22px;height:22px;color:var(--gold)}
+.back{font-size:.78rem;color:var(--gold);text-decoration:none;letter-spacing:.06em}
+main{padding:44px 0 80px}
+.eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+h1{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(1.8rem,4vw,2.4rem);color:var(--sand);line-height:1.25;margin-bottom:14px}
+.lede{font-size:.97rem;color:var(--muted);max-width:640px;margin-bottom:36px;line-height:1.8}
+
+/* TABS */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:32px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:12px 22px;font-size:.88rem;font-family:'Outfit',sans-serif;letter-spacing:.06em;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:color .15s;margin-bottom:-1px}
+.tab:hover{color:var(--gold-soft)}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* CALCULATOR LAYOUT */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media(max-width:620px){.calc-grid{grid-template-columns:1fr}}
+
+/* INPUTS */
+.inputs-panel{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:28px}
+.field{margin-bottom:20px}
+.field:last-child{margin-bottom:0}
+label{display:block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.input-wrap{position:relative}
+.prefix,.suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:.88rem;color:var(--muted);pointer-events:none}
+.prefix{left:12px}
+.suffix{right:12px}
+input[type=number],input[type=range],select{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;color:var(--ink);font-family:'Outfit',sans-serif;font-size:.93rem;padding:11px 14px;transition:border-color .15s;-moz-appearance:textfield}
+input[type=number]:focus,select:focus{outline:none;border-color:var(--gold)}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
+.has-prefix input{padding-left:36px}
+.has-suffix input{padding-right:42px}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238C9AAD' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+
+/* RANGE SLIDER */
+.range-row{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-top:5px}
+input[type=range]{-webkit-appearance:none;appearance:none;height:4px;background:var(--line);border:none;border-radius:2px;padding:0;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--midnight)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--midnight)}
+.range-val{color:var(--gold-soft);font-weight:500}
+
+/* TOGGLE */
+.toggle-row{display:flex;gap:0;margin-bottom:20px}
+.toggle-btn{flex:1;padding:9px 0;font-size:.82rem;font-family:'Outfit',sans-serif;letter-spacing:.06em;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;transition:all .15s}
+.toggle-btn:first-child{border-radius:4px 0 0 4px}
+.toggle-btn:last-child{border-radius:0 4px 4px 0;border-left:none}
+.toggle-btn.active{background:rgba(201,164,92,.12);border-color:var(--gold);color:var(--gold)}
+
+/* RESULTS PANEL */
+.results-panel{display:flex;flex-direction:column;gap:16px}
+.result-card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 24px}
+.result-card.highlight{border-color:var(--gold);background:rgba(201,164,92,.06)}
+.result-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.result-value{font-family:'Marcellus',serif;font-size:1.7rem;color:var(--sand);line-height:1.1}
+.result-value.green{color:var(--green)}
+.result-value.amber{color:var(--amber)}
+.result-value.red{color:var(--red)}
+.result-sub{font-size:.8rem;color:var(--muted);margin-top:4px}
+.breakdown{margin-top:14px;border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:7px}
+.breakdown-row{display:flex;justify-content:space-between;font-size:.83rem}
+.breakdown-row .bk-label{color:var(--muted)}
+.breakdown-row .bk-val{color:var(--ink);font-weight:400}
+.breakdown-row.total{border-top:1px solid var(--line);padding-top:7px;margin-top:3px}
+.breakdown-row.total .bk-label,.breakdown-row.total .bk-val{color:var(--gold-soft);font-weight:500}
+
+/* YIELD METER */
+.yield-meter{margin-top:10px;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.yield-fill{height:100%;border-radius:3px;transition:width .4s,background .4s}
+
+/* NOTICE */
+.calc-notice{font-size:.78rem;color:var(--muted);line-height:1.6;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:4px;margin-top:16px}
+
+/* GUIDE SECTION */
+.guide{margin-top:56px;padding-top:40px;border-top:1px solid var(--line)}
+.guide h2{font-family:'Marcellus',serif;font-weight:400;font-size:1.3rem;color:var(--sand);margin-bottom:20px}
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.guide-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 20px}
+.guide-card h3{font-size:.88rem;color:var(--gold-soft);margin-bottom:8px}
+.guide-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:var(--muted)}
+.footer-inner{max-width:860px;margin:0 auto;padding:0 20px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <svg class="mark" viewBox="0 0 32 32" fill="none"><path d="M6 27V15Q6 8 16 8Q26 8 26 15V27" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="8" x2="16" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="2" r="1.6" fill="currentColor"/><line x1="4" y1="27" x2="28" y2="27" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Dubai Real Estate Directory
+    </a>
+    <a class="back" href="/">&larr; Back to directory</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="eyebrow">Free Tools</div>
+  <h1>Dubai Property Calculator</h1>
+  <p class="lede">Work out the total cost to buy, your rental return, or monthly mortgage payments — all based on current Dubai rules and fees.</p>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" role="tab" onclick="switchTab('cost', this)">🏠 Buying Cost</button>
+    <button class="tab" role="tab" onclick="switchTab('yield', this)">📈 Rental Yield</button>
+    <button class="tab" role="tab" onclick="switchTab('mortgage', this)">🏦 Mortgage</button>
+  </div>
+
+  <!-- ==============================
+       TAB 1: BUYING COST
+  =============================== -->
+  <div class="tab-panel active" id="panel-cost">
+    <div class="calc-grid">
+      <div class="inputs-panel">
+
+        <div class="field">
+          <label>Property Price (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="c-price" value="1500000" min="100000" max="100000000" step="50000" oninput="calcCost()">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Buyer type</label>
+          <div class="toggle-row">
+            <button class="toggle-btn active" id="btn-nonuae" onclick="setBuyerType('non-uae')">Non-UAE National</button>
+            <button class="toggle-btn" id="btn-uae" onclick="setBuyerType('uae')">UAE National</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Purchase type</label>
+          <div class="toggle-row">
+            <button class="toggle-btn active" id="btn-secondary" onclick="setMarket('secondary')">Secondary (resale)</button>
+            <button class="toggle-btn" id="btn-offplan" onclick="setMarket('off-plan')">Off-plan (new)</button>
+          </div>
+        </div>
+
+        <div class="field" id="c-finance-field">
+          <label>Financing</label>
+          <div class="toggle-row">
+            <button class="toggle-btn active" id="btn-cash" onclick="setFinance('cash')">Cash</button>
+            <button class="toggle-btn" id="btn-mortgage" onclick="setFinance('mortgage')">Mortgage</button>
+          </div>
+        </div>
+
+        <div class="field" id="c-deposit-field" style="display:none">
+          <label>Your deposit (%)</label>
+          <input type="range" id="c-deposit" min="25" max="80" value="25" step="5" oninput="document.getElementById('c-deposit-val').textContent=this.value+'%'; calcCost()">
+          <div class="range-row"><span>25% (min)</span><span class="range-val" id="c-deposit-val">25%</span><span>80%</span></div>
+        </div>
+
+      </div>
+
+      <div class="results-panel" id="cost-results">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <div class="calc-notice">
+      Fees shown are standard for 2026. DLD transfer fee: 4% of purchase price (buyer). Agency commission: 2% (standard, negotiable). Trustee office fee: AED 4,000 properties under AED 500K, AED 5,250 above. Mortgage registration: 0.25% of loan + AED 290. Some off-plan developers waive the DLD fee — confirm with your developer. These are estimates; always verify with your agency and trustee office.
+    </div>
+  </div>
+
+  <!-- ==============================
+       TAB 2: RENTAL YIELD
+  =============================== -->
+  <div class="tab-panel" id="panel-yield">
+    <div class="calc-grid">
+      <div class="inputs-panel">
+
+        <div class="field">
+          <label>Purchase Price (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="y-price" value="1200000" min="100000" step="50000" oninput="calcYield()">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Expected Monthly Rent (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="y-rent" value="7000" min="500" step="500" oninput="calcYield()">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Annual Service Charge (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="y-service" value="12000" min="0" step="1000" oninput="calcYield()">
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:5px">Typical: AED 10–30 per sq ft/year. Check with developer.</div>
+        </div>
+
+        <div class="field">
+          <label>Other annual costs (management, maintenance) (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="y-other" value="3000" min="0" step="500" oninput="calcYield()">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Expected vacancy (weeks/year)</label>
+          <input type="range" id="y-vacancy" min="0" max="12" value="2" step="1" oninput="document.getElementById('y-vacancy-val').textContent=this.value+' wks'; calcYield()">
+          <div class="range-row"><span>0 wks</span><span class="range-val" id="y-vacancy-val">2 wks</span><span>12 wks</span></div>
+        </div>
+
+      </div>
+
+      <div class="results-panel" id="yield-results">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <div class="calc-notice">
+      Gross yield = (annual rent ÷ purchase price) × 100. Net yield = ((annual rent − service charge − other costs) ÷ purchase price) × 100. Vacancy reduces effective rent. These are estimates — actual yield depends on your specific unit, tenant quality and market conditions. For current market yields by community, speak to an agency specialising in investment properties.
+    </div>
+  </div>
+
+  <!-- ==============================
+       TAB 3: MORTGAGE
+  =============================== -->
+  <div class="tab-panel" id="panel-mortgage">
+    <div class="calc-grid">
+      <div class="inputs-panel">
+
+        <div class="field">
+          <label>Property Price (AED)</label>
+          <div class="input-wrap has-prefix">
+            <span class="prefix">AED</span>
+            <input type="number" id="m-price" value="1500000" min="100000" step="50000" oninput="syncDeposit(); calcMortgage()">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Buyer type (affects max LTV)</label>
+          <div class="toggle-row">
+            <button class="toggle-btn active" id="btn-m-nonuae" onclick="setMBuyerType('non-uae')">Non-UAE National</button>
+            <button class="toggle-btn" id="btn-m-uae" onclick="setMBuyerType('uae')">UAE National</button>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:7px" id="m-ltv-note">Max loan: 75% (properties ≤ AED 5M). Min deposit: 25%.</div>
+        </div>
+
+        <div class="field">
+          <label>Your deposit (%)</label>
+          <input type="range" id="m-deposit" min="25" max="80" value="25" step="5" oninput="document.getElementById('m-deposit-val').textContent=this.value+'%'; calcMortgage()">
+          <div class="range-row"><span id="m-min-label">25% (min)</span><span class="range-val" id="m-deposit-val">25%</span><span>80%</span></div>
+        </div>
+
+        <div class="field">
+          <label>Annual Interest Rate (%)</label>
+          <input type="range" id="m-rate" min="2" max="9" value="4.5" step="0.25" oninput="document.getElementById('m-rate-val').textContent=parseFloat(this.value).toFixed(2)+'%'; calcMortgage()">
+          <div class="range-row"><span>2%</span><span class="range-val" id="m-rate-val">4.50%</span><span>9%</span></div>
+        </div>
+
+        <div class="field">
+          <label>Loan term (years)</label>
+          <input type="range" id="m-term" min="5" max="25" value="20" step="1" oninput="document.getElementById('m-term-val').textContent=this.value+' yrs'; calcMortgage()">
+          <div class="range-row"><span>5 yrs</span><span class="range-val" id="m-term-val">20 yrs</span><span>25 yrs</span></div>
+        </div>
+
+      </div>
+
+      <div class="results-panel" id="mortgage-results">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <div class="calc-notice">
+      LTV limits (Central Bank of UAE 2023): non-UAE nationals — 75% for properties ≤ AED 5M, 65% above. UAE nationals — 80% (≤ AED 5M), 70% above. Max term: 25 years, must be repaid by age 65 (employed) or 70 (self-employed). Rates shown are illustrative — actual rate depends on your bank, income, credit profile and whether you take a fixed or variable product. Mortgage registration fee (0.25% of loan + AED 290) is separate from this calculation. Get a pre-approval letter from your bank before making an offer.
+    </div>
+  </div>
+
+  <!-- GUIDE SECTION -->
+  <div class="guide">
+    <h2>Key numbers to know</h2>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>DLD Transfer Fee</h3>
+        <p>4% of the purchase price, paid by the buyer at the trustee office on transfer day. The largest single cost of buying in Dubai.</p>
+      </div>
+      <div class="guide-card">
+        <h3>Agency Commission</h3>
+        <p>2% of the purchase price, standard across Dubai. Paid by the buyer to the buyer's agent at or before transfer.</p>
+      </div>
+      <div class="guide-card">
+        <h3>Min. Deposit (Mortgage)</h3>
+        <p>25% for non-UAE nationals on properties up to AED 5M. 35% for properties above AED 5M. Cash buyers have no minimum.</p>
+      </div>
+      <div class="guide-card">
+        <h3>Good Rental Yield</h3>
+        <p>Gross yield of 6–8% is considered strong in Dubai. JVC, Business Bay and Sports City typically offer the highest yields in the mid-market segment.</p>
+      </div>
+      <div class="guide-card">
+        <h3>Service Charges</h3>
+        <p>Annual fee for building maintenance, paid by the owner. Ranges from AED 8/sqft (budget buildings) to AED 40+/sqft (premium towers). Check before buying — it directly affects net yield.</p>
+      </div>
+      <div class="guide-card">
+        <h3>Golden Visa Threshold</h3>
+        <p>Property worth AED 2M+ (equity, not purchase price if mortgaged) qualifies for a 10-year UAE Golden Visa. AED 750K+ qualifies for a 2-year investor visa.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:36px;padding-top:24px;border-top:1px solid var(--line)">
+    <p style="font-size:.82rem;color:var(--muted)">Ready to find an agency? <a href="/" style="color:var(--gold)">Browse 30 independently reviewed Dubai real estate agencies &rarr;</a></p>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:8px">New to buying in Dubai? Read our <a href="/how-to-buy-property-in-dubai" style="color:var(--gold)">complete buyer's guide for foreigners &rarr;</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">&copy; 2026 Dubai Real Estate Directory. Independent directory &mdash; not affiliated with any agency listed. Calculator figures are estimates only.</div>
+</footer>
+
+<script>
+// ─── SHARED STATE ────────────────────────────────────────────
+let costState  = { buyerType:'non-uae', market:'secondary', finance:'cash' };
+let mortgState = { buyerType:'non-uae' };
+
+function fmt(n){
+  if(n>=1000000) return 'AED '+(n/1000000).toFixed(n%1000000===0?0:2)+'M';
+  if(n>=1000) return 'AED '+Math.round(n).toLocaleString('en-AE');
+  return 'AED '+Math.round(n).toLocaleString('en-AE');
+}
+function fmtRaw(n){ return Math.round(n).toLocaleString('en-AE'); }
+function pct(n){ return n.toFixed(2)+'%'; }
+
+// ─── TAB SWITCHING ────────────────────────────────────────────
+function switchTab(name, btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+  gtag('event','calculator_tab',{tab:name});
+}
+
+// ─── BUYING COST ─────────────────────────────────────────────
+function setBuyerType(t){
+  costState.buyerType=t;
+  document.getElementById('btn-nonuae').classList.toggle('active',t==='non-uae');
+  document.getElementById('btn-uae').classList.toggle('active',t==='uae');
+  calcCost();
+}
+function setMarket(m){
+  costState.market=m;
+  document.getElementById('btn-secondary').classList.toggle('active',m==='secondary');
+  document.getElementById('btn-offplan').classList.toggle('active',m==='off-plan');
+  calcCost();
+}
+function setFinance(f){
+  costState.finance=f;
+  document.getElementById('btn-cash').classList.toggle('active',f==='cash');
+  document.getElementById('btn-mortgage').classList.toggle('active',f==='mortgage');
+  document.getElementById('c-deposit-field').style.display=f==='mortgage'?'':'none';
+  calcCost();
+}
+
+function calcCost(){
+  const price = parseFloat(document.getElementById('c-price').value)||0;
+  if(!price){ return; }
+
+  // DLD fee — off-plan some developers waive; show as standard 4%
+  const dldPct = 0.04;
+  const dld = price * dldPct;
+
+  // Agency commission
+  const agencyPct = 0.02;
+  const agency = price * agencyPct;
+
+  // Trustee fee
+  const trustee = price < 500000 ? 4000 : 5250;
+
+  // Mortgage registration
+  let mortgReg = 0, loanAmt = 0, depositAmt = 0;
+  let depositPct = parseFloat(document.getElementById('c-deposit').value)/100 || 0.25;
+  if(costState.finance === 'mortgage'){
+    depositAmt = price * depositPct;
+    loanAmt = price - depositAmt;
+    mortgReg = loanAmt * 0.0025 + 290;
+  }
+
+  const totalFees = dld + agency + trustee + mortgReg;
+  const totalCash = (costState.finance==='mortgage' ? depositAmt : price) + totalFees;
+
+  const html = `
+    <div class="result-card highlight">
+      <div class="result-label">Total cash needed on transfer day</div>
+      <div class="result-value">${fmt(totalCash)}</div>
+      <div class="result-sub">${costState.finance==='mortgage'
+        ? `Deposit (${Math.round(depositPct*100)}%) + all fees`
+        : 'Full purchase price + all fees'}</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Fee breakdown</div>
+      <div class="breakdown">
+        ${costState.finance==='mortgage'?`<div class="breakdown-row"><span class="bk-label">Your deposit (${Math.round(depositPct*100)}%)</span><span class="bk-val">AED ${fmtRaw(depositAmt)}</span></div>`:''}
+        ${costState.finance==='cash'?`<div class="breakdown-row"><span class="bk-label">Purchase price</span><span class="bk-val">AED ${fmtRaw(price)}</span></div>`:''}
+        <div class="breakdown-row"><span class="bk-label">DLD transfer fee (4%)</span><span class="bk-val">AED ${fmtRaw(dld)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Agency commission (2%)</span><span class="bk-val">AED ${fmtRaw(agency)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Trustee office fee</span><span class="bk-val">AED ${fmtRaw(trustee)}</span></div>
+        ${costState.finance==='mortgage'?`<div class="breakdown-row"><span class="bk-label">Mortgage registration (0.25% + 290)</span><span class="bk-val">AED ${fmtRaw(mortgReg)}</span></div>`:''}
+        <div class="breakdown-row total"><span class="bk-label">Transaction fees subtotal</span><span class="bk-val">AED ${fmtRaw(totalFees)}</span></div>
+        ${costState.finance==='mortgage'?`<div class="breakdown-row" style="margin-top:4px"><span class="bk-label" style="color:var(--muted)">Remaining loan</span><span class="bk-val" style="color:var(--muted)">AED ${fmtRaw(loanAmt)}</span></div>`:''}
+      </div>
+    </div>
+    ${costState.market==='off-plan'?`<div class="result-card"><div class="result-label" style="color:var(--amber)">Off-plan note</div><div class="result-sub" style="color:var(--muted);margin-top:0">Some developers waive the 4% DLD fee for off-plan purchases. Ask your developer before signing. The DLD fee is included here as a conservative estimate.</div></div>`:''}
+  `;
+  document.getElementById('cost-results').innerHTML = html;
+}
+
+// ─── RENTAL YIELD ─────────────────────────────────────────────
+function calcYield(){
+  const price   = parseFloat(document.getElementById('y-price').value)||0;
+  const rent    = parseFloat(document.getElementById('y-rent').value)||0;
+  const service = parseFloat(document.getElementById('y-service').value)||0;
+  const other   = parseFloat(document.getElementById('y-other').value)||0;
+  const vacWks  = parseFloat(document.getElementById('y-vacancy').value)||0;
+  if(!price||!rent) return;
+
+  const annualRentGross = rent * 12;
+  const vacancyLoss = rent * (vacWks / 4.33); // approx weeks to months
+  const annualRentNet = annualRentGross - vacancyLoss;
+  const totalCosts = service + other;
+
+  const grossYield = (annualRentGross / price) * 100;
+  const netYield   = ((annualRentNet - totalCosts) / price) * 100;
+  const annualCashflow = annualRentNet - totalCosts;
+  const monthlyCashflow = annualCashflow / 12;
+  const breakevenYears = annualCashflow > 0 ? (price / annualCashflow) : null;
+
+  const yieldColor = netYield >= 6 ? 'green' : netYield >= 4 ? 'amber' : 'red';
+  const yieldLabel = netYield >= 6 ? 'Strong yield' : netYield >= 4 ? 'Moderate yield' : 'Below market average';
+  const meterWidth = Math.min(netYield / 10 * 100, 100);
+  const meterColor = netYield >= 6 ? 'var(--green)' : netYield >= 4 ? 'var(--amber)' : 'var(--red)';
+
+  const html = `
+    <div class="result-card highlight">
+      <div class="result-label">Net rental yield</div>
+      <div class="result-value ${yieldColor}">${pct(netYield)}</div>
+      <div class="result-sub">${yieldLabel}</div>
+      <div class="yield-meter"><div class="yield-fill" style="width:${meterWidth}%;background:${meterColor}"></div></div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Gross yield (before costs)</div>
+      <div class="result-value" style="font-size:1.3rem">${pct(grossYield)}</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Annual cashflow (net)</div>
+      <div class="result-value ${annualCashflow>=0?'green':'red'}" style="font-size:1.3rem">AED ${fmtRaw(annualCashflow)}</div>
+      <div class="result-sub">AED ${fmtRaw(monthlyCashflow)} / month</div>
+    </div>
+    ${breakevenYears?`<div class="result-card"><div class="result-label">Break-even (years to recoup purchase price)</div><div class="result-value" style="font-size:1.3rem">${breakevenYears.toFixed(1)} yrs</div><div class="result-sub">At current net cashflow, excluding capital appreciation</div></div>`:''}
+    <div class="result-card">
+      <div class="result-label">Yield summary</div>
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="bk-label">Gross annual rent</span><span class="bk-val">AED ${fmtRaw(annualRentGross)}</span></div>
+        ${vacWks>0?`<div class="breakdown-row"><span class="bk-label">Vacancy (${vacWks} wks)</span><span class="bk-val" style="color:var(--red)">− AED ${fmtRaw(vacancyLoss)}</span></div>`:''}
+        <div class="breakdown-row"><span class="bk-label">Service charge</span><span class="bk-val" style="color:var(--red)">− AED ${fmtRaw(service)}</span></div>
+        ${other>0?`<div class="breakdown-row"><span class="bk-label">Other costs</span><span class="bk-val" style="color:var(--red)">− AED ${fmtRaw(other)}</span></div>`:''}
+        <div class="breakdown-row total"><span class="bk-label">Net annual income</span><span class="bk-val">AED ${fmtRaw(annualCashflow)}</span></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('yield-results').innerHTML = html;
+}
+
+// ─── MORTGAGE ─────────────────────────────────────────────────
+function setMBuyerType(t){
+  mortgState.buyerType=t;
+  document.getElementById('btn-m-nonuae').classList.toggle('active',t==='non-uae');
+  document.getElementById('btn-m-uae').classList.toggle('active',t==='uae');
+  updateLTVLimits();
+  calcMortgage();
+}
+
+function updateLTVLimits(){
+  const price = parseFloat(document.getElementById('m-price').value)||0;
+  const isNonUAE = mortgState.buyerType==='non-uae';
+  const maxLTV = isNonUAE ? (price>5000000?0.65:0.75) : (price>5000000?0.70:0.80);
+  const minDeposit = Math.round((1-maxLTV)*100);
+  const slider = document.getElementById('m-deposit');
+  slider.min = minDeposit;
+  if(parseFloat(slider.value)<minDeposit) { slider.value=minDeposit; document.getElementById('m-deposit-val').textContent=minDeposit+'%'; }
+  document.getElementById('m-min-label').textContent=minDeposit+'% (min)';
+  const ltvNote = isNonUAE
+    ? (price>5000000 ? 'Max loan: 65% (properties > AED 5M). Min deposit: 35%.' : 'Max loan: 75% (properties ≤ AED 5M). Min deposit: 25%.')
+    : (price>5000000 ? 'Max loan: 70% (UAE nationals, > AED 5M). Min deposit: 30%.' : 'Max loan: 80% (UAE nationals, ≤ AED 5M). Min deposit: 20%.');
+  document.getElementById('m-ltv-note').textContent = ltvNote;
+}
+
+function syncDeposit(){
+  updateLTVLimits();
+}
+
+function calcMortgage(){
+  const price   = parseFloat(document.getElementById('m-price').value)||0;
+  const depPct  = parseFloat(document.getElementById('m-deposit').value)/100 || 0.25;
+  const annRate = parseFloat(document.getElementById('m-rate').value)/100 || 0.045;
+  const termYrs = parseInt(document.getElementById('m-term').value)||20;
+  if(!price) return;
+
+  const deposit   = price * depPct;
+  const loan      = price - deposit;
+  const months    = termYrs * 12;
+  const monthRate = annRate / 12;
+
+  // Monthly payment formula
+  let monthly;
+  if(monthRate === 0){
+    monthly = loan / months;
+  } else {
+    monthly = loan * (monthRate * Math.pow(1+monthRate, months)) / (Math.pow(1+monthRate, months) - 1);
+  }
+
+  const totalRepay  = monthly * months;
+  const totalInt    = totalRepay - loan;
+  const mortgReg    = loan * 0.0025 + 290;
+  const intRatio    = (totalInt / totalRepay * 100);
+
+  const html = `
+    <div class="result-card highlight">
+      <div class="result-label">Monthly payment</div>
+      <div class="result-value">AED ${fmtRaw(monthly)}</div>
+      <div class="result-sub">${termYrs} years · ${pct(annRate*100)} annual rate</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Loan amount</div>
+      <div class="result-value" style="font-size:1.3rem">AED ${fmtRaw(loan)}</div>
+      <div class="result-sub">${Math.round(depPct*100)}% deposit = AED ${fmtRaw(deposit)}</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Total interest paid</div>
+      <div class="result-value" style="font-size:1.3rem;color:var(--amber)">AED ${fmtRaw(totalInt)}</div>
+      <div class="result-sub">${pct(intRatio)} of total repayment of AED ${fmtRaw(totalRepay)}</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Cost summary</div>
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="bk-label">Your deposit</span><span class="bk-val">AED ${fmtRaw(deposit)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Loan amount</span><span class="bk-val">AED ${fmtRaw(loan)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Monthly repayment</span><span class="bk-val">AED ${fmtRaw(monthly)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Total repaid over ${termYrs} yrs</span><span class="bk-val">AED ${fmtRaw(totalRepay)}</span></div>
+        <div class="breakdown-row"><span class="bk-label">Total interest cost</span><span class="bk-val">AED ${fmtRaw(totalInt)}</span></div>
+        <div class="breakdown-row total"><span class="bk-label">Mortgage registration fee (est.)</span><span class="bk-val">AED ${fmtRaw(mortgReg)}</span></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('mortgage-results').innerHTML = html;
+}
+
+// ─── INIT ─────────────────────────────────────────────────────
+calcCost();
+calcYield();
+updateLTVLimits();
+calcMortgage();
+</script>
+</body>
+</html>
