@@ -475,6 +475,8 @@ footer a.plain{color:var(--gold);text-decoration:none}
   .trustbar .wrap{flex-direction:column;gap:14px;align-items:flex-start;padding:16px 20px}
   .area-grid{grid-template-columns:1fr 1fr}
   .hero p{font-size:.94rem}
+  .eyebrow{letter-spacing:.18em}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px 16px}
 }
 </style>
 </head>
@@ -1291,7 +1293,7 @@ countUp(document.getElementById('stat-count'),agencies.length);
 document.getElementById('ratings-checked-date').textContent=REVIEWS_CHECKED;
 
 // Scroll-reveal: fade/slide sections and cards into view as the user scrolls
-const revealTargets=document.querySelectorAll('.section-head, .area-card, .faq-item, .guide .cols > div, .package');
+const revealTargets=document.querySelectorAll('.section-head, .hw-step, .area-card, .faq-item, .guide .cols > div, .package');
 revealTargets.forEach(el=>el.classList.add('reveal'));
 if('IntersectionObserver' in window){
   const io=new IntersectionObserver((entries)=>{
