@@ -11,10 +11,10 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dubai Property Calculator — Buying Costs, Rental Yield & Mortgage (2026)</title>
-<meta name="description" content="Free Dubai property calculator. Work out the total buying cost including DLD fees, calculate rental yield, and estimate mortgage payments — all in one place.">
-<meta property="og:title" content="Dubai Property Calculator — Costs, Yield & Mortgage (2026)">
-<meta property="og:description" content="Calculate total buying costs (DLD 4% fee, agency, trustee), rental yield (gross and net), and monthly mortgage payments for Dubai property.">
+<title>Dubai Property Calculator — Buying Costs, Yield, Mortgage, Affordability & Buy vs Rent (2026)</title>
+<meta name="description" content="Free 5-in-1 Dubai property calculator. Work out total buying costs (DLD fees, agency, trustee), rental yield with cash-on-cash return, mortgage payments, affordability (UAE DBR rule), and buy vs rent comparison.">
+<meta property="og:title" content="Dubai Property Calculator — 5-in-1 Free Tool (2026)">
+<meta property="og:description" content="Calculate Dubai buying costs, rental yield (cash-on-cash, bank stress test), mortgage, affordability and buy vs rent — all in one free tool.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dubairealestatedirectory.com/dubai-property-calculator">
 <meta property="og:image" content="https://dubairealestatedirectory.com/og-image.png">
@@ -122,6 +122,13 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 /* NOTICE */
 .calc-notice{font-size:.78rem;color:var(--muted);line-height:1.6;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:4px;margin-top:16px}
+
+/* AGENCY CTA */
+.agency-cta{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;background:rgba(201,164,92,.06);border:1px solid rgba(201,164,92,.3);border-radius:4px;margin-top:16px;flex-wrap:wrap}
+.agency-cta-text{font-size:.84rem;color:var(--gold-soft)}
+.agency-cta-text strong{color:var(--gold);display:block;margin-bottom:2px;font-size:.88rem}
+.agency-cta-btn{flex-shrink:0;padding:9px 18px;background:var(--gold);color:var(--midnight);font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-decoration:none;border-radius:3px;white-space:nowrap;transition:opacity .15s}
+.agency-cta-btn:hover{opacity:.85}
 
 /* GUIDE SECTION */
 .guide{margin-top:56px;padding-top:40px;border-top:1px solid var(--line)}
@@ -526,6 +533,11 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
 </footer>
 
 <script>
+// ─── AGENCY CTA ──────────────────────────────────────────────
+function agencyCTA(msg){
+  return `<div class="agency-cta"><div class="agency-cta-text"><strong>Ready to take the next step?</strong>${msg}</div><a class="agency-cta-btn" href="/">Browse agencies →</a></div>`;
+}
+
 // ─── SHARED STATE ────────────────────────────────────────────
 let costState  = { buyerType:'non-uae', market:'secondary', finance:'cash' };
 let mortgState = { buyerType:'non-uae' };
@@ -620,6 +632,7 @@ function calcCost(){
     ${costState.market==='off-plan'?`<div class="result-card"><div class="result-label" style="color:var(--amber)">Off-plan note</div><div class="result-sub" style="color:var(--muted);margin-top:0">Some developers waive the 4% DLD fee for off-plan purchases. Ask your developer before signing. The DLD fee is included here as a conservative estimate.</div></div>`:''}
     ${price>=2000000?`<div class="visa-badge"><span class="visa-badge-icon">🏅</span><div class="visa-badge-text"><strong>Golden Visa eligible</strong> — This purchase price meets the AED 2M threshold for a 10-year UAE Golden Visa. For cash purchases, eligibility applies at transfer. For mortgaged purchases, your equity (not loan amount) must equal AED 2M+ — confirm with the GDRFA.</div></div>`:''}
     ${price>=750000&&price<2000000?`<div class="visa-badge"><span class="visa-badge-icon">📋</span><div class="visa-badge-text"><strong>Investor visa eligible (2-year)</strong> — Properties at AED 750K+ qualify for a 2-year investor visa. For the 10-year Golden Visa, you need AED 2M+.</div></div>`:''}
+    ${agencyCTA('Find a trusted Dubai agency to guide you through the purchase process.')}
   `;
   document.getElementById('cost-results').innerHTML = html;
 }
@@ -719,6 +732,7 @@ function calcYield(){
     </div>
     ${mortgBlock}
     ${breakevenYears?`<div class="result-card"><div class="result-label">Break-even (years to recoup purchase price via rent)</div><div class="result-value" style="font-size:1.3rem">${breakevenYears.toFixed(1)} yrs</div><div class="result-sub">At current net cashflow, excluding capital appreciation</div></div>`:''}
+    ${agencyCTA('Looking for an investment property? Browse agencies that specialise in buy-to-let.')}
     <div class="result-card">
       <div class="result-label">Yield summary</div>
       <div class="breakdown">
@@ -813,6 +827,7 @@ function calcMortgage(){
         <div class="breakdown-row total"><span class="bk-label">Mortgage registration fee (est.)</span><span class="bk-val">AED ${fmtRaw(mortgReg)}</span></div>
       </div>
     </div>
+    ${agencyCTA('Need help finding the right property? Browse agencies by area and specialty.')}
   `;
   document.getElementById('mortgage-results').innerHTML = html;
 }
@@ -881,6 +896,7 @@ function calcAfford(){
       </div>
     </div>
     ${isGoldenVisa?`<div class="visa-badge"><span class="visa-badge-icon">🏅</span><div class="visa-badge-text"><strong>Golden Visa eligible</strong> — Your maximum price of ${fmt(maxPrice)} qualifies for the 10-year UAE Golden Visa. Subject to GDRFA confirmation.</div></div>`:''}
+    ${agencyCTA(`Your budget is up to ${fmt(maxPrice)}. Browse agencies that work in this price range.`)}
   `;
 }
 
@@ -999,6 +1015,7 @@ function calcBuyRent(){
         <div class="breakdown-row" style="margin-top:4px"><span class="bk-label" style="color:var(--green)">Capital gain (${(growthRate*100).toFixed(1)}%/yr)</span><span class="bk-val" style="color:var(--green)">+ AED ${fmtRaw(capitalGain)}</span></div>
       </div>
     </div>
+    ${agencyCTA(buyWins ? 'The numbers favour buying. Find a trusted agency to help you move forward.' : 'Still exploring? Browse agencies to understand your options before you commit.')}
   `;
 }
 

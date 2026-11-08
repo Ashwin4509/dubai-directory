@@ -403,6 +403,8 @@ footer a.plain{color:var(--gold);text-decoration:none}
 /* Buyer guide cards */
 .guide-strip{padding:56px 0}
 .guide-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:30px}
+.guide-card[data-cols="2"]{grid-column:span 2}
+@media(max-width:500px){.guide-card[data-cols="2"]{grid-column:span 1}}
 .guide-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 20px;text-decoration:none;transition:border-color .2s,transform .2s;display:block}
 .guide-card:hover{border-color:var(--gold);transform:translateY(-2px)}
 .guide-card h3{font-family:'Marcellus',serif;font-weight:400;font-size:1rem;color:var(--gold-soft);margin-bottom:8px}
@@ -911,11 +913,20 @@ footer a.plain{color:var(--gold);text-decoration:none}
 <section class="guide-strip">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-eyebrow">Buyer resources</div>
+      <div class="section-eyebrow">Free tools &amp; buyer resources</div>
       <h2>Know before you commit</h2>
-      <p>Independent guides covering what every Dubai property buyer needs to understand — fees, RERA rules, area prices and Golden Visa eligibility.</p>
+      <p>Independent guides and free calculators covering what every Dubai property buyer needs to understand — fees, RERA rules, area prices and Golden Visa eligibility.</p>
     </div>
     <div class="guide-cards">
+      <a class="guide-card reveal" href="/dubai-property-calculator" style="border-color:var(--gold);background:rgba(201,164,92,.06);grid-column:span 2" data-cols="2">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <span style="font-size:1.3rem">🧮</span>
+          <span style="font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)">Free Tool</span>
+        </div>
+        <h3 style="font-size:1.1rem;margin-bottom:8px">Dubai Property Calculator — 5 tools in one</h3>
+        <p style="font-size:.84rem;color:var(--muted);line-height:1.6">Work out total buying costs (DLD, agency, trustee fees), rental yield with cash-on-cash return, mortgage payments, how much you can afford, and whether buying or renting makes more sense for your situation.</p>
+        <span class="guide-cta" style="color:var(--gold)">Open calculator →</span>
+      </a>
       <a class="guide-card reveal" href="/how-to-buy-property-in-dubai">
         <h3>How to buy property in Dubai</h3>
         <p>The full purchase process — offer, MOU, NOC, DLD registration and what fees to expect at each stage.</p>
