@@ -71,7 +71,7 @@ label{display:block;font-size:.75rem;letter-spacing:.12em;text-transform:upperca
 input[type=number],input[type=range],select{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:4px;color:var(--ink);font-family:'Outfit',sans-serif;font-size:.93rem;padding:11px 14px;transition:border-color .15s;-moz-appearance:textfield}
 input[type=number]:focus,select:focus{outline:none;border-color:var(--gold)}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}
-.has-prefix input{padding-left:36px}
+.has-prefix input{padding-left:46px}
 .has-suffix input{padding-right:42px}
 select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238C9AAD' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
 
@@ -156,12 +156,13 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
 
 /* Calc header entrance */
 @keyframes calcHeaderIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
-.calc-header h1{animation:calcHeaderIn .6s cubic-bezier(0.22,1,0.36,1) both}
-.calc-header p{animation:calcHeaderIn .6s cubic-bezier(0.22,1,0.36,1) .12s both}
+.calc-header .eyebrow{animation:calcHeaderIn .5s cubic-bezier(0.22,1,0.36,1) both}
+.calc-header h1{animation:calcHeaderIn .6s cubic-bezier(0.22,1,0.36,1) .08s both}
+.calc-header p{animation:calcHeaderIn .6s cubic-bezier(0.22,1,0.36,1) .18s both}
 .tabs{animation:calcHeaderIn .5s cubic-bezier(0.22,1,0.36,1) .2s both}
 
 @media(prefers-reduced-motion:reduce){
-  .tab-panel.active,.results-panel .result-card,.calc-header h1,.calc-header p,.tabs{animation:none}
+  .tab-panel.active,.results-panel .result-card,.calc-header .eyebrow,.calc-header h1,.calc-header p,.tabs{animation:none}
 }
 </style>
 </head>
@@ -178,9 +179,11 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
 </header>
 
 <main class="wrap">
-  <div class="eyebrow">Free Tools</div>
-  <h1>Dubai Property Calculator</h1>
-  <p class="lede">Work out the total cost to buy, your rental return, or monthly mortgage payments — all based on current Dubai rules and fees.</p>
+  <div class="calc-header">
+    <div class="eyebrow">Free Tools</div>
+    <h1>Dubai Property Calculator</h1>
+    <p class="lede">Work out the total cost to buy, your rental return, or monthly mortgage payments — all based on current Dubai rules and fees.</p>
+  </div>
 
   <div class="tabs" role="tablist">
     <button class="tab active" role="tab" onclick="switchTab('cost', this)">🏠 Buying Cost</button>
