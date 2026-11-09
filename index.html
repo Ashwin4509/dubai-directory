@@ -461,7 +461,67 @@ footer a.plain{color:var(--gold);text-decoration:none}
 .guide-card p{font-size:0.875rem;color:var(--muted);line-height:1.6}
 .guide-card .guide-cta{font-size:0.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:12px;display:block}
 
+/* Hamburger button */
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  background:none;border:none;cursor:pointer;padding:8px;
+  width:40px;height:40px;border-radius:2px;
+  transition:opacity .2s var(--ease-out);
+}
+.hamburger:hover{opacity:.7}
+.hamburger span{
+  display:block;height:1.5px;background:var(--ink);border-radius:1px;
+  transition:transform .4s var(--ease-out),opacity .3s var(--ease-out),width .3s var(--ease-out);
+  transform-origin:center;
+}
+.hamburger span:nth-child(3){width:65%;margin-left:auto}
+.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger[aria-expanded="true"] span:nth-child(3){width:100%;transform:translateY(-6.5px) rotate(-45deg)}
+
+/* Full-height mobile menu panel */
+.mobile-menu{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(11,20,32,.97);backdrop-filter:blur(20px);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:0;padding:40px 24px;
+  opacity:0;pointer-events:none;
+  transition:opacity .4s var(--ease-out);
+}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
+.mobile-menu nav a{
+  font-family:'Marcellus',serif;font-weight:400;font-size:clamp(1.5rem,6vw,2rem);
+  color:var(--sand);text-decoration:none;padding:14px 20px;text-align:center;
+  opacity:0;transform:translateY(24px);
+  transition:color .2s var(--ease-out),opacity .5s var(--ease-out),transform .5s var(--ease-out);
+  width:100%;border-bottom:1px solid rgba(201,164,92,.12);
+}
+.mobile-menu nav a:last-child{border-bottom:none}
+.mobile-menu nav a:hover{color:var(--gold-soft)}
+.mobile-menu.open nav a{opacity:1;transform:translateY(0)}
+.mobile-menu.open nav a:nth-child(1){transition-delay:.05s}
+.mobile-menu.open nav a:nth-child(2){transition-delay:.11s}
+.mobile-menu.open nav a:nth-child(3){transition-delay:.17s}
+.mobile-menu.open nav a:nth-child(4){transition-delay:.23s}
+.mobile-menu .mob-cta{
+  margin-top:28px;display:inline-block;
+  opacity:0;transform:translateY(24px);
+  transition:opacity .5s var(--ease-out) .3s,transform .5s var(--ease-out) .3s;
+}
+.mobile-menu.open .mob-cta{opacity:1;transform:translateY(0)}
+
 /* Mobile */
+@media(max-width:760px){
+  .hamburger{display:flex}
+  .nav-links{display:none!important}
+  .header-cta{display:none}
+}
+@media(max-width:480px){
+  .logo{font-size:.95rem;gap:8px}
+  .logo span{display:none}
+  .mark{width:24px;height:24px}
+}
 @media(max-width:600px){
   .how-works .steps{grid-template-columns:1fr;gap:30px}
   .how-works .steps::before{display:none}
@@ -479,6 +539,24 @@ footer a.plain{color:var(--gold);text-decoration:none}
   .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 8px}
   .stat span{letter-spacing:.08em}
 }
+
+/* ─── Hero entrance animation ──────────────────────────────── */
+@keyframes heroSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero .eyebrow{animation:heroSlideUp .5s var(--ease-out) both}
+.hero h1{animation:heroSlideUp .65s var(--ease-out) .08s both}
+.hero p{animation:heroSlideUp .65s var(--ease-out) .18s both}
+.hero .hero-stats{animation:heroSlideUp .6s var(--ease-out) .28s both}
+.btn-browse{animation:heroSlideUp .5s var(--ease-out) .36s both}
+
+/* FAQ open animation */
+.faq-item[open] summary{color:var(--gold-soft)}
+.faq-item summary{transition:color .2s var(--ease-out)}
+.faq-item[open]>p{animation:faqIn .3s var(--ease-out) both}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Area card hover */
+.area-card{transition:border-color .3s var(--ease-out),transform .3s var(--ease-out),background .3s var(--ease-out)}
+.area-card:hover{border-color:var(--gold);transform:translateY(-2px)}
 </style>
 </head>
 <body>
@@ -493,8 +571,21 @@ footer a.plain{color:var(--gold);text-decoration:none}
       <a href="/about">About</a>
     </nav>
     <a class="header-cta" href="#get-listed">Get Listed</a>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation" aria-modal="true">
+  <nav>
+    <a href="#areas">Areas</a>
+    <a href="#guide">Guide</a>
+    <a href="#faq">FAQ</a>
+    <a href="/about">About</a>
+  </nav>
+  <a class="btn-gold mob-cta" href="#get-listed">Get Listed</a>
+</div>
 
 <section class="hero">
   <div class="hero-glow"></div>
@@ -503,7 +594,7 @@ footer a.plain{color:var(--gold);text-decoration:none}
     <h1>35 independently reviewed real estate agencies in Dubai, <em>in one place.</em></h1>
     <p>An independent, curated directory of Dubai's established property agencies and brokerages — compare by area, specialty and service before you buy, sell, rent or invest.</p>
     <div class="hero-stats">
-      <div class="stat"><b id="stat-count">33</b><span>Agencies listed</span></div>
+      <div class="stat"><b id="stat-count">35</b><span>Agencies listed</span></div>
       <div class="stat"><b>12+</b><span>Areas covered</span></div>
       <div class="stat"><b>0 AED</b><span>Cost to browse</span></div>
     </div>
@@ -1294,7 +1385,7 @@ countUp(document.getElementById('stat-count'),agencies.length);
 document.getElementById('ratings-checked-date').textContent=REVIEWS_CHECKED;
 
 // Scroll-reveal: fade/slide sections and cards into view as the user scrolls
-const revealTargets=document.querySelectorAll('.section-head, .hw-step, .area-card, .faq-item, .guide .cols > div, .package');
+const revealTargets=document.querySelectorAll('.section-head, .hw-step, .area-card, .faq-item, .guide .cols > div, .package, .trust-item');
 revealTargets.forEach(el=>el.classList.add('reveal'));
 if('IntersectionObserver' in window){
   const io=new IntersectionObserver((entries)=>{
@@ -1346,6 +1437,28 @@ document.getElementById('area-grid').addEventListener('click',e=>{
     });
   },{threshold:.3});
   taglineIO.observe(el);
+})();
+
+// Mobile menu toggle
+(function(){
+  const btn=document.querySelector('.hamburger');
+  const menu=document.getElementById('mobile-menu');
+  if(!btn||!menu)return;
+  function openMenu(){
+    btn.setAttribute('aria-expanded','true');
+    menu.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    btn.setAttribute('aria-expanded','false');
+    menu.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  btn.addEventListener('click',()=>{
+    btn.getAttribute('aria-expanded')==='true' ? closeMenu() : openMenu();
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
 })();
 
 const leadForm=document.getElementById('lead-form');

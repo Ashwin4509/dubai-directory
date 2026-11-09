@@ -140,6 +140,29 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:var(--muted)}
 .footer-inner{max-width:860px;margin:0 auto;padding:0 20px}
+
+/* ─── Tab panel entrance animation ─────────────────────────── */
+@keyframes tabPanelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.tab-panel.active{animation:tabPanelIn .22s cubic-bezier(0.22,1,0.36,1) both}
+
+/* Result card stagger on first load / tab switch */
+@keyframes resultCardIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.results-panel .result-card{animation:resultCardIn .3s cubic-bezier(0.22,1,0.36,1) both}
+.results-panel .result-card:nth-child(2){animation-delay:.05s}
+.results-panel .result-card:nth-child(3){animation-delay:.1s}
+.results-panel .result-card:nth-child(4){animation-delay:.15s}
+.results-panel .result-card:nth-child(5){animation-delay:.2s}
+.results-panel .result-card:nth-child(6){animation-delay:.25s}
+
+/* Calc header entrance */
+@keyframes calcHeaderIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+.calc-header h1{animation:calcHeaderIn .6s cubic-bezier(0.22,1,0.36,1) both}
+.calc-header p{animation:calcHeaderIn .6s cubic-bezier(0.22,1,0.36,1) .12s both}
+.tabs{animation:calcHeaderIn .5s cubic-bezier(0.22,1,0.36,1) .2s both}
+
+@media(prefers-reduced-motion:reduce){
+  .tab-panel.active,.results-panel .result-card,.calc-header h1,.calc-header p,.tabs{animation:none}
+}
 </style>
 </head>
 <body>
@@ -487,7 +510,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
     </div>
 
     <div class="calc-notice">
-      Comparison assumes: buying costs include DLD 4%, agency 2%, trustee AED 5,250, plus all mortgage payments and service charges over the hold period. Capital gain is based on your growth assumption. Renting cost is monthly rent × months held. This does not account for investment returns on the deposit/down-payment saved by renting, rent inflation, or tax (UAE has no property tax or CGT). Use as a directional guide only.
+      Comparison assumes: buying costs include DLD 4%, agency 2%, trustee AED 4,000–5,250 (based on price), plus all mortgage payments and service charges over the hold period. Capital gain is based on your growth assumption. Renting cost is monthly rent × months held. This does not account for investment returns on the deposit/down-payment saved by renting, rent inflation, or tax (UAE has no property tax or CGT). Use as a directional guide only.
     </div>
   </div>
 
@@ -523,7 +546,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
   </div>
 
   <div style="margin-top:36px;padding-top:24px;border-top:1px solid var(--line)">
-    <p style="font-size:.82rem;color:var(--muted)">Ready to find an agency? <a href="/" style="color:var(--gold)">Browse 30 independently reviewed Dubai real estate agencies &rarr;</a></p>
+    <p style="font-size:.82rem;color:var(--muted)">Ready to find an agency? <a href="/" style="color:var(--gold)">Browse 35 independently reviewed Dubai real estate agencies &rarr;</a></p>
     <p style="font-size:.82rem;color:var(--muted);margin-top:8px">New to buying in Dubai? Read our <a href="/how-to-buy-property-in-dubai" style="color:var(--gold)">complete buyer's guide for foreigners &rarr;</a></p>
   </div>
 </main>
@@ -557,6 +580,12 @@ function switchTab(name, btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('panel-'+name).classList.add('active');
   btn.classList.add('active');
+  // Re-trigger result card animations
+  document.getElementById('panel-'+name).querySelectorAll('.result-card').forEach(c=>{
+    c.style.animation='none';
+    void c.offsetHeight;
+    c.style.animation='';
+  });
   gtag('event','calculator_tab',{tab:name});
 }
 
@@ -686,7 +715,7 @@ function calcYield(){
     const annualMortgage = monthlyMortgage * 12;
     const levCashflow = annualCashflow - annualMortgage;
     // Cash invested = deposit + buying fees (DLD 4% + agency 2% + trustee)
-    const fees   = price * 0.06 + 5250;
+    const fees   = price * 0.06 + (price < 500000 ? 4000 : 5250);
     const cashIn = deposit + fees;
     const cocReturn = (levCashflow / cashIn) * 100;
     // Bank stress test: monthly rent ÷ monthly mortgage ≥ 1.2 (UAE investment mortgage rule)
@@ -709,7 +738,7 @@ function calcYield(){
         <div class="breakdown" style="margin-top:10px">
           <div class="breakdown-row"><span class="bk-label">Monthly rent</span><span class="bk-val">AED ${fmtRaw(rent)}</span></div>
           <div class="breakdown-row"><span class="bk-label">Monthly mortgage</span><span class="bk-val">AED ${fmtRaw(monthlyMortgage)}</span></div>
-          <div class="breakdown-row"><span class="bk-label">Levered monthly cashflow</span><span class="bk-val ${levCashflow/12>=0?'':''}">AED ${fmtRaw(levCashflow/12)}</span></div>
+          <div class="breakdown-row"><span class="bk-label">Levered monthly cashflow</span><span class="bk-val" style="${levCashflow/12<0?'color:var(--red)':'color:var(--green)'}">AED ${fmtRaw(levCashflow/12)}</span></div>
         </div>
       </div>`;
   }
@@ -914,7 +943,8 @@ function calcBuyRent(){
 
   const deposit    = price * depPct;
   const loan       = price - deposit;
-  const fees       = price * 0.04 + price * 0.02 + 5250; // DLD + agency + trustee
+  const trustee    = price < 500000 ? 4000 : 5250;
+  const fees       = price * 0.04 + price * 0.02 + trustee; // DLD + agency + trustee
   const monthRate  = annRate / 12;
   const totalMos   = termYrs * 12;
   const holdMos    = Math.min(holdYrs * 12, totalMos);
