@@ -116,7 +116,7 @@ header .wrap{padding:0}
   max-width:1100px;
   margin:0 auto;
 }
-.logo{font-family:'Marcellus',serif;font-size:1.15rem;letter-spacing:.06em;color:var(--gold-soft);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:11px}
+.logo{font-family:'Marcellus',serif;font-size:1.15rem;letter-spacing:.06em;color:var(--gold-soft);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:11px;min-height:44px}
 .logo-text{display:flex;flex-direction:column;gap:3px}
 .logo-text > span{color:var(--muted);font-size:.68rem;letter-spacing:.12em;line-height:1}
 .mark{flex-shrink:0;width:30px;height:30px;color:var(--gold)}
@@ -226,7 +226,8 @@ h1 em{
 .chip{
   font-size:0.75rem;letter-spacing:.06em;color:var(--muted);
   border:1px solid rgba(140,154,173,.3);background:transparent;
-  padding:7px 15px;border-radius:2px;cursor:pointer;
+  padding:0 15px;border-radius:2px;cursor:pointer;
+  min-height:44px;display:inline-flex;align-items:center;
   font-family:'Outfit',sans-serif;
   transition:background .3s var(--ease-out),border-color .3s var(--ease-out),color .3s var(--ease-out);
 }
@@ -290,8 +291,8 @@ h1 em{
 .card h3{font-family:'Marcellus',serif;font-weight:400;font-size:1.125rem;color:var(--sand)}
 .card .est{font-size:0.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 .g-rating{
-  display:flex;align-items:center;gap:6px;font-size:0.875rem;color:var(--gold-soft);
-  text-decoration:none;line-height:1;
+  display:inline-flex;align-items:center;gap:6px;font-size:0.875rem;color:var(--gold-soft);
+  text-decoration:none;line-height:1;min-height:44px;
 }
 .g-rating svg{flex-shrink:0;width:13px;height:13px;color:var(--gold);display:block}
 .g-rating b{color:var(--sand);font-weight:500;line-height:1;margin:0}
@@ -307,8 +308,9 @@ h1 em{
 }
 .card a{
   font-size:0.75rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold);text-decoration:none;margin-top:6px;
+  color:var(--gold);text-decoration:none;margin-top:auto;
   display:inline-flex;align-items:center;gap:7px;
+  min-height:44px;padding-inline:2px;
 }
 .card a::after{content:"→";transition:transform .3s var(--ease-out)}
 .card a:hover::after{transform:translateX(4px)}
