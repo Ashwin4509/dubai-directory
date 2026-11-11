@@ -38,9 +38,14 @@ body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
 .wrap{max-width:860px;margin:0 auto;padding:0 20px}
 header{padding:18px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,20,32,.92);backdrop-filter:blur(10px);z-index:100}
 .header-inner{max-width:860px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-family:'Marcellus',serif;font-size:1.05rem;letter-spacing:.06em;color:var(--gold-soft);text-decoration:none;display:inline-flex;align-items:center;gap:9px}
+.logo{font-family:'Marcellus',serif;font-size:1.05rem;letter-spacing:.06em;color:var(--gold-soft);text-decoration:none;display:inline-flex;align-items:center;gap:9px;white-space:nowrap}
 .mark{flex-shrink:0;width:22px;height:22px;color:var(--gold)}
-.back{font-size:.78rem;color:var(--gold);text-decoration:none;letter-spacing:.06em}
+.back{font-size:.78rem;color:var(--gold);text-decoration:none;letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
+@media(max-width:440px){
+  .logo{font-size:.82rem;letter-spacing:.03em;gap:7px}
+  .mark{width:18px;height:18px}
+  .back{font-size:.68rem;letter-spacing:.02em}
+}
 main{padding:44px 0 80px}
 .eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 h1{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(1.8rem,4vw,2.4rem);color:var(--sand);line-height:1.25;margin-bottom:14px}
