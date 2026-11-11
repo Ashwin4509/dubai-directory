@@ -159,12 +159,9 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.76rem;color:va
 .results-panel .result-card:nth-child(5){animation-delay:.2s}
 .results-panel .result-card:nth-child(6){animation-delay:.25s}
 
-/* Calc header entrance */
-@keyframes calcHeaderIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
-.calc-header .eyebrow{animation:calcHeaderIn .5s cubic-bezier(0.22,1,0.36,1) both}
-.calc-header h1{animation:calcHeaderIn .6s cubic-bezier(0.22,1,0.36,1) .08s both}
-.calc-header p{animation:calcHeaderIn .6s cubic-bezier(0.22,1,0.36,1) .18s both}
-.tabs{animation:calcHeaderIn .5s cubic-bezier(0.22,1,0.36,1) .2s both}
+/* Calc header entrance — no delay so elements are never stuck invisible */
+@keyframes calcHeaderIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+.calc-header .eyebrow,.calc-header h1,.calc-header p,.tabs{animation:calcHeaderIn .5s cubic-bezier(0.22,1,0.36,1) both}
 
 @media(prefers-reduced-motion:reduce){
   .tab-panel.active,.results-panel .result-card,.calc-header .eyebrow,.calc-header h1,.calc-header p,.tabs{animation:none}
