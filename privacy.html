@@ -34,9 +34,9 @@ body::before{
 .wrap{max-width:820px;margin:0 auto;padding:0 20px}
 header{padding:18px 0;border-bottom:1px solid var(--line)}
 .header-inner{max-width:820px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-family:'Marcellus',serif;font-size:1.1rem;letter-spacing:.06em;color:var(--gold-soft);text-decoration:none;display:inline-flex;align-items:center;gap:9px}
+.logo{font-family:'Marcellus',serif;font-size:1.1rem;letter-spacing:.06em;color:var(--gold-soft);text-decoration:none;display:inline-flex;align-items:center;gap:9px;white-space:nowrap}
 .mark{flex-shrink:0;width:24px;height:24px;color:var(--gold)}
-.back{font-size:.8rem;color:var(--gold);text-decoration:none;letter-spacing:.06em}
+.back{font-size:.8rem;color:var(--gold);text-decoration:none;letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
 main{padding:56px 0 80px}
 h1{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(1.8rem,4vw,2.4rem);color:var(--sand);margin-bottom:8px}
 .updated{font-size:.82rem;color:var(--muted);margin-bottom:36px;letter-spacing:.04em}
@@ -51,6 +51,7 @@ a{color:var(--gold)}
 }
 footer{border-top:1px solid var(--line);padding:28px 0;font-size:.78rem;color:var(--muted)}
 .footer-inner{max-width:820px;margin:0 auto;padding:0 20px}
+@media(max-width:440px){.logo{font-size:.82rem;letter-spacing:.03em;gap:7px}.mark{width:18px;height:18px}.back{font-size:.68rem;letter-spacing:.02em}}
 </style>
 </head>
 <body>
