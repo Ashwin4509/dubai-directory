@@ -74,6 +74,13 @@ h2{font-family:'Marcellus',serif;font-weight:400;font-size:1.35rem;color:var(--s
 .contact-box h2{margin-bottom:10px}
 .contact-box p{font-size:.95rem;color:var(--muted);margin-bottom:22px}
 .contact-box a{color:var(--gold);text-decoration:none;font-size:1.05rem}
+.stats-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-bottom:36px}
+.stat-cell{background:var(--card);padding:18px 16px;text-align:center}
+.stat-num{font-family:'Marcellus',serif;font-size:1.5rem;color:var(--gold);line-height:1;margin-bottom:4px}
+.stat-label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cta-channels{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.btn-wa{background:#25D366;color:#fff;font-weight:500}
+.btn-wa:hover{background:#1ebe59}
 
 /* Claim form modal */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;padding:20px}
@@ -110,6 +117,25 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.78rem;color:va
   <div class="eyebrow">For agencies</div>
   <h1>Reach buyers already searching for an agency</h1>
   <p class="lede">Dubai Real Estate Directory is an independent guide trusted by buyers, investors and expats researching agencies in Dubai. Featured placement puts your agency in front of people who are actively looking — not scrolling a social feed.</p>
+
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-num">126</div>
+      <div class="stat-label">Active users · Oct–Nov 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">35</div>
+      <div class="stat-label">Agency profile clicks · monthly</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">US · IN · UAE</div>
+      <div class="stat-label">Top buyer markets</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">ChatGPT</div>
+      <div class="stat-label">AI search referrals active</div>
+    </div>
+  </div>
 
   <div style="background:var(--card);border:1px solid var(--gold);border-radius:4px;padding:16px 20px;margin-bottom:36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
     <div>
@@ -226,10 +252,12 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:.78rem;color:va
 
   <div class="contact-box">
     <h2>Ready to talk? Reach us directly.</h2>
-    <p>We reply within one business day — usually same day. Include your agency name and the specialty you want to feature.</p>
-    <a href="mailto:hello@dubairealestatedirectory.com?subject=Featured%20Placement%20Enquiry&body=Agency%20name%3A%0AContact%20name%3A%0APhone%2FWhatsApp%3A%0ASpecialty%20%28luxury%2C%20off-plan%2C%20residential%2C%20etc%29%3A" style="display:inline-block;margin-bottom:12px" onclick="gtag('event','advertise_email_click',{event_category:'advertise'})">hello@dubairealestatedirectory.com</a>
-    <br>
-    <span style="font-size:.82rem;color:var(--muted)">Prefer WhatsApp? Include your number in the email and we'll reply there.</span>
+    <p>We reply within one business day — usually same day. Tell us your agency name and the specialty you want to feature (luxury, off-plan, residential, commercial).</p>
+    <div class="cta-channels">
+      <a href="mailto:hello@dubairealestatedirectory.com?subject=Featured%20Placement%20Enquiry&body=Agency%20name%3A%0AContact%20name%3A%0APhone%2FWhatsApp%3A%0ASpecialty%20%28luxury%2C%20off-plan%2C%20residential%2C%20etc%29%3A" class="btn btn-gold" style="max-width:220px" onclick="gtag('event','advertise_email_click',{event_category:'advertise'})">Email us</a>
+      <button class="btn btn-outline" style="max-width:220px" onclick="openModal('featured')">Use the form</button>
+    </div>
+    <p style="margin-top:16px;margin-bottom:0;font-size:.82rem">hello@dubairealestatedirectory.com &mdash; we reply same day</p>
   </div>
 
 </main>
